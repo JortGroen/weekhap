@@ -1,0 +1,215 @@
+{
+  "published_weeks": [
+    "2026-W35",
+    "2026-W36"
+  ],
+  "schema_version": 1,
+  "source": {
+    "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
+    "fetched_at": "2026-08-28T14:15:16.164545+02:00",
+    "modified": "2026-08-27T12:20:54",
+    "modified_gmt": "2026-08-27T10:20:54",
+    "page_id": 19172,
+    "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
+  },
+  "weeks": {
+    "2026-W35": {
+      "date_range_text": "24 t/m 30 aug",
+      "fruit": [
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Beurre hardy peer",
+          "origin": "familie Pouw uit Schalkwijk",
+          "source_line": "Beurre hardy peer van familie Pouw uit Schalkwijk (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Jubileum pruim",
+          "origin": "Lindegaard uit Beusichem",
+          "source_line": "Jubileum pruim van Lindegaard uit Beusichem (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Bananen",
+          "origin": "uit Ecuador",
+          "source_line": "Bananen uit Ecuador (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": true,
+          "included_in_two_person_box": true,
+          "name": "Kiwibes",
+          "origin": "Twinkle green uit Portugal",
+          "source_line": "Kiwibes van Twinkle green uit Portugal (Biologisch) *"
+        }
+      ],
+      "iso_year": 2026,
+      "planner_additions": [
+        {
+          "name": "Eieren",
+          "origin": "planner_rule",
+          "quantity": 6,
+          "unit": "stuks"
+        }
+      ],
+      "schema_version": 1,
+      "source": {
+        "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
+        "fetched_at": "2026-08-28T14:15:16.164545+02:00",
+        "modified": "2026-08-27T12:20:54",
+        "modified_gmt": "2026-08-27T10:20:54",
+        "page_id": 19172,
+        "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
+      },
+      "vegetables": [
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Snijbiet",
+          "origin": "uit eigen tuin",
+          "source_line": "Snijbiet uit eigen tuin (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Knolselderij met loof",
+          "origin": "tuinderij Natuurluck uit Zevenhuizen",
+          "source_line": "Knolselderij met loof van tuinderij Natuurluck uit Zevenhuizen (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Courgette",
+          "origin": "uit eigen tuin en familie Roozendaal uit Hoeksche Waard",
+          "source_line": "Courgette uit eigen tuin en familie Roozendaal uit Hoeksche Waard (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": true,
+          "included_in_two_person_box": true,
+          "name": "Regenboogwortel",
+          "origin": "Familie Hospers uit de Noordoostpolder",
+          "source_line": "Regenboogwortel van Familie Hospers uit de Noordoostpolder (Biologisch) *"
+        }
+      ],
+      "week": "2026-W35",
+      "week_number": 35
+    },
+    "2026-W36": {
+      "date_range_text": "31 aug t/m 6 sept",
+      "fruit": [
+        {
+          "category": "fruit",
+          "certification": "biodynamisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "WildWonder tomaatjes",
+          "origin": "Frank de Koning uit Brielle",
+          "source_line": "WildWonder tomaatjes van Frank de Koning uit Brielle (Biodynamisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Mango",
+          "origin": "familie Alhambra uit Spanje",
+          "source_line": "Mango van familie Alhambra uit Spanje (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Blauwe bes",
+          "origin": "familie Fernandez uit Spanje",
+          "source_line": "Blauwe bes van familie Fernandez uit Spanje (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": true,
+          "included_in_two_person_box": true,
+          "name": "Santana appel",
+          "origin": "Lindegaard uit Beusichem",
+          "source_line": "Santana appel van Lindegaard uit Beusichem (Biologisch) *"
+        }
+      ],
+      "iso_year": 2026,
+      "planner_additions": [
+        {
+          "name": "Eieren",
+          "origin": "planner_rule",
+          "quantity": 6,
+          "unit": "stuks"
+        }
+      ],
+      "schema_version": 1,
+      "source": {
+        "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
+        "fetched_at": "2026-08-28T14:15:16.164545+02:00",
+        "modified": "2026-08-27T12:20:54",
+        "modified_gmt": "2026-08-27T10:20:54",
+        "page_id": 19172,
+        "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
+      },
+      "vegetables": [
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Oranje pompoen",
+          "origin": "uit eigen tuin & van David Luijendijk uit s’ Gravenzande",
+          "source_line": "Oranje pompoen uit eigen tuin & van David Luijendijk uit s’ Gravenzande (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biodynamisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Puntpaprika",
+          "origin": "Frank de Koning uit Brielle",
+          "source_line": "Puntpaprika van Frank de Koning uit Brielle (Biodynamisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Pastinaak",
+          "origin": "familie Dieleman uit Zeeland",
+          "source_line": "Pastinaak van familie Dieleman uit Zeeland (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": true,
+          "included_in_two_person_box": true,
+          "name": "Eikenbladsla",
+          "origin": "uit eigen tuin",
+          "source_line": "Eikenbladsla uit eigen tuin (Biologisch) *"
+        }
+      ],
+      "week": "2026-W36",
+      "week_number": 36
+    }
+  }
+}

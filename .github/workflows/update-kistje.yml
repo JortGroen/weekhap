@@ -1,0 +1,98 @@
+name: Update Kistje Vol Smaak
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Vijf keer per dag in UTC. De bron blijkt rond het middaguur te wijzigen,
+    # maar het exacte publicatieritme is nog niet met genoeg waarnemingen
+    # vastgesteld, dus wordt er bewust breed gecontroleerd in plaats van op een
+    # aangenomen tijdstip. Zie observed_modified_history in docs/api/status.json.
+    - cron: "17 6,9,12,15,18 * * *"
+
+# Geen push-trigger: de workflow commit zelf naar dezelfde branch en zou zich
+# anders eindeloos opnieuw aanroepen.
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-kistje
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python installeren
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Dependencies installeren
+        run: pip install -r requirements.txt
+
+      - name: Unit tests draaien
+        run: python -m pytest -q
+
+      - name: Live fetch, parse en publiceer
+        run: python -m src.build --raw-out raw_response.json
+
+      - name: Ruwe response bewaren voor debugging
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-response
+          path: raw_response.json
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Controleren of er iets gewijzigd is
+        id: diff
+        run: |
+          if [ -n "$(git status --porcelain docs/)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git status --short docs/
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Geen wijzigingen in docs/; niets te committen."
+          fi
+
+      - name: Committen en pushen
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "chore(kistje): update published box contents [skip ci]"
+          git push
+
+  # Verificatie via de publieke GitHub Pages-URL. De E2E-test is pas geslaagd
+  # als de data daadwerkelijk opnieuw van het publieke eindpunt is opgehaald.
+  verify-published:
+    needs: update
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python installeren
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Dependencies installeren
+        run: pip install -r requirements.txt
+
+      - name: Publieke Pages-URL uitlezen en valideren
+        env:
+          PAGES_BASE_URL: ${{ vars.PAGES_BASE_URL }}
+        run: python -m src.verify_published
