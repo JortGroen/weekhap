@@ -157,11 +157,13 @@ zijn. De workflow gebruikt alleen de standaard `GITHUB_TOKEN` met
 `permissions: contents: write`. Broninhoud wordt uitsluitend als data behandeld:
 er wordt geen HTML of script uit `content.rendered` uitgevoerd.
 
-## Consumerclient voor de maaltijdplanner
+## Consumerclient voor de publieke API
 
-`src/kistje_client.py` is de referentie-implementatie van het consumercontract:
-read-only HTTP GET naar de publieke Pages-URL, meer niet. Geen plugin, geen
-login, geen account, geen state — werkt op elk device gelijk.
+`src/kistje_client.py` is een lichtgewicht referentieclient voor het
+gepubliceerde contract: read-only HTTP GET naar de publieke Pages-URL, meer
+niet. Hij is niet aan een specifieke afnemer gebonden en wordt binnen deze
+repository gebruikt door `tests/test_e2e.py` om de publieke JSON uit te
+oefenen.
 
 ```python
 from datetime import date
@@ -247,28 +249,65 @@ gebruikt om de publieke JSON te verifiëren; `openapi.json` is puur documentatie
 van het gepubliceerde contract en wordt door niets in deze repo aangeroepen.
 Beide kunnen worden verwijderd zonder dat de pijplijn stopt met werken.
 
-## Versheidscontrole in `verify-published`
+## Versheid bewijzen na publicatie
 
-GitHub Pages herbouwt asynchroon na de push. Zonder extra controle zou de
-verificatiejob de vórige gepubliceerde versie kunnen valideren en tóch groen
-worden — het contract klopt immers, alleen de inhoud is oud.
+GitHub Pages is eventually consistent: na de push kan het publieke eindpunt nog
+even de vórige versie serveren. Die oude versie heeft een geldig schema en een
+geldig contract en zou dus zonder extra bewijs groen worden — de workflow zou
+succes melden terwijl de nieuwe data nog nergens staat.
 
-Daarom geeft de `update`-job de zojuist gepubliceerde `source_modified` door als
-job-output. `verify-published` krijgt die binnen als
-`EXPECTED_SOURCE_MODIFIED` en wacht met backoff (15/30/60/90/120s) tot Pages
-diezelfde waarde serveert — zowel in `status.json` als in elk weekbestand.
-Blijft Pages de oude versie serveren, dan faalt de job expliciet.
+Daarom draagt elk weekbestand een `content_hash`: een SHA-256 over de inhoud,
+berekend **zonder** `source.fetched_at` en zonder het hashveld zelf. Twee runs
+over dezelfde bron geven daardoor exact dezelfde hash. `status.json` bevat de
+`week_hashes` plus een `publication_hash` over die hashes samen: één waarde die
+de gehele publicatie identificeert.
+
+```
+update-job    publiceert → leest publication_hash uit status.json
+              → geeft door als job-output
+verify-job    krijgt EXPECTED_PUBLICATION_HASH binnen
+              → pollt status.json tot die hash wordt geserveerd
+                (backoff 15/30/60/90/120s, ruim vijf minuten)
+              → controleert per week dat content_hash overeenkomt
+              → herberekent de hash uit de geserveerde inhoud
+              → faalt expliciet als Pages de oude versie blijft leveren
+```
+
+`fetched_at` wordt bewust **niet** als versheidssignaal gebruikt: dat is
+runtime-metadata en zegt niets over de identiteit van de bron. De hash doet dat
+wel, en de herberekening bewijst bovendien dat de meegeleverde hash de inhoud
+werkelijk dekt.
 
 Bij een handmatige run buiten de workflow is de variabele leeg; dan wordt alleen
 het contract gecontroleerd en niet op versheid gewacht.
 
-## Bekende beperking: scheduled workflows en inactiviteit
+## Keepalive voor scheduled workflows
 
-GitHub schakelt scheduled workflows uit na 60 dagen repository-inactiviteit.
-Deze repo commit ongeveer wekelijks, maar die commits komen van
-`github-actions[bot]`, en of botcommits als activiteit tellen is niet
-gedocumenteerd gedrag waar je op moet bouwen.
+GitHub documenteert:
 
-Detecteren: staat in de Actions-tab de melding dat scheduled runs zijn
-uitgeschakeld, dan is dit gebeurd. Herstellen: één handmatige
-`workflow_dispatch` of een gewone push zet het weer aan.
+> In a public repository, scheduled workflows are automatically disabled when no
+> repository activity has occurred in 60 days.
+
+Dit geldt **alleen voor publieke repositories** — en deze is publiek, dus het is
+van toepassing. GitHub documenteert echter **niet** wat als "repository
+activity" telt. Of de wekelijkse commits van `github-actions[bot]` meetellen is
+dus onbekend, en de autonome werking mag daar niet van afhangen.
+
+`.github/workflows/keepalive.yml` draait daarom maandelijks (`23 4 3 * *`) en:
+
+1. controleert via de Actions API of `update-kistje.yml` nog `state: active` is
+   en faalt luid als dat niet zo is;
+2. schrijft een tijdstempel naar `.github/keepalive` en commit dat met
+   `chore: scheduled workflow keepalive [skip ci]`.
+
+Bewust géén aanpassing van `latest.json`, `status.json` of historische
+weekbestanden: keepalive-activiteit blijft geïsoleerd en herkenbaar, en de
+gepubliceerde data krijgt geen ruis.
+
+**Dit is best-effort, geen garantie.** Telt GitHub botcommits niet als
+activiteit, dan wordt ook deze workflow uitgeschakeld — een scheduled workflow
+kan zichzelf niet uit die toestand redden. De statuscheck maakt het zichtbaar.
+
+**Handmatig herstellen** als scheduled runs toch stoppen: open de workflow in de
+Actions-tab en kies *Enable workflow*, of draai hem één keer via *Run workflow*
+(`workflow_dispatch`). Elke gewone push werkt ook. Daarna loopt het schema weer.

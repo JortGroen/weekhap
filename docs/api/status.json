@@ -1,8 +1,9 @@
 {
-  "last_success": "2026-08-28T14:15:16.164545+02:00",
+  "last_success": "2026-08-28T15:04:33.724942+02:00",
   "observed_modified_history": [
     "2026-08-27T10:20:54"
   ],
+  "publication_hash": "2c88506498982336b04050edfb4c3983abdc9842b3f254f02bd162228ae770fd",
   "published_weeks": [
     "2026-W35",
     "2026-W36"
@@ -10,5 +11,9 @@
   "source_modified": "2026-08-27T12:20:54",
   "source_modified_gmt": "2026-08-27T10:20:54",
   "status": "ok",
-  "warnings": []
+  "warnings": [],
+  "week_hashes": {
+    "2026-W35": "4c0909b1165a3fc991055194ffea9b0e1a4c9f94977ea6dcacf3bcf868217c4f",
+    "2026-W36": "64904382d07f5c143a3ef5cadbf17d1e8d3a2580153ee95912eff7ca5946283e"
+  }
 }

@@ -249,8 +249,14 @@ def test_week_zonder_datumrange_wordt_afgewezen():
         "<div> Kistjes Groente:<ul><li><b>Prei</b> uit eigen tuin</li></ul></div>"
         "<div> Kistje Fruit:<ul><li><b>Appel</b> uit Betuwe</li></ul></div>"
     )
-    with pytest.raises(ParseError, match="geen datumrange"):
+    with pytest.raises(ParseError) as exc_info:
         parse_content(html)
+
+    # De melding moet vanuit een Actions-log te diagnosticeren zijn.
+    message = str(exc_info.value)
+    assert "datumrange" in message
+    assert "Week 12" in message, "weekkop ontbreekt in de melding"
+    assert "Kistjes Groente" in message, "bronfragment ontbreekt in de melding"
 
 
 def test_ongeldig_weeknummer_wordt_afgewezen():

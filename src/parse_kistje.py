@@ -57,6 +57,10 @@ class Product:
 class WeekSection:
     week_number: int
     date_range_text: str
+    # Alleen voor foutmeldingen: maakt een gewijzigd bronformaat
+    # diagnosticeerbaar vanuit het GitHub Actions-log.
+    heading_text: str = ""
+    source_excerpt: str = ""
     vegetables: list[Product] = field(default_factory=list)
     fruit: list[Product] = field(default_factory=list)
 
@@ -137,8 +141,20 @@ def parse_content(rendered_html: str) -> list[WeekSection]:
             candidate = _normalize_whitespace(next_heading.get_text())
             if not WEEK_HEADING_RE.match(candidate):
                 date_range_text = candidate
+        heading_text = _normalize_whitespace(heading.get_text())
+        excerpt = _normalize_whitespace(
+            " ".join(str(sibling) for sibling in heading.next_siblings)
+        )[:200]
         week_markers.append(
-            (order[id(heading)], WeekSection(int(match.group(1)), date_range_text))
+            (
+                order[id(heading)],
+                WeekSection(
+                    int(match.group(1)),
+                    date_range_text,
+                    heading_text=heading_text,
+                    source_excerpt=excerpt,
+                ),
+            )
         )
 
     if not week_markers:
@@ -187,8 +203,17 @@ def _validate_sections(sections: list[WeekSection]) -> None:
             )
         if not section.date_range_text:
             raise ParseError(
-                "Week %d heeft geen datumrange; die is nodig voor betrouwbare "
-                "jaarinferentie" % section.week_number
+                "Geen geldige datumrange gevonden voor de gedetecteerde "
+                "weekkop %r (week %d). De datumrange hoort in de <h3> direct "
+                "na de weekkop te staan en is nodig om het ISO-jaar te "
+                "bepalen; zonder die range wordt er niets gepubliceerd. "
+                "Mogelijk is het bronformaat gewijzigd. Fragment na de kop: "
+                "%r"
+                % (
+                    section.heading_text or ("Week %d" % section.week_number),
+                    section.week_number,
+                    section.source_excerpt or "<leeg>",
+                )
             )
 
         if not section.vegetables:

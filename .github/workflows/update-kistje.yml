@@ -25,7 +25,7 @@ jobs:
     outputs:
       # Doorgegeven aan verify-published, zodat die kan controleren dat Pages
       # de publicatie van deze run serveert en niet nog de vorige.
-      source_modified: ${{ steps.publish.outputs.source_modified }}
+      publication_hash: ${{ steps.publish.outputs.publication_hash }}
 
     steps:
       - name: Checkout
@@ -54,9 +54,9 @@ jobs:
         id: publish
         run: |
           python -m src.build --raw-out raw_response.json
-          modified=$(python -c "import json; print(json.load(open('docs/api/status.json'))['source_modified'])")
-          echo "source_modified=$modified" >> "$GITHUB_OUTPUT"
-          echo "Gepubliceerde source_modified: $modified"
+          hash=$(python -c "import json; print(json.load(open('docs/api/status.json'))['publication_hash'])")
+          echo "publication_hash=$hash" >> "$GITHUB_OUTPUT"
+          echo "Gepubliceerde publication_hash: $hash"
 
       - name: Ruwe response bewaren voor debugging
         if: always()
@@ -111,7 +111,7 @@ jobs:
       - name: Publieke Pages-URL uitlezen en valideren
         env:
           PAGES_BASE_URL: ${{ vars.PAGES_BASE_URL }}
-          EXPECTED_SOURCE_MODIFIED: ${{ needs.update.outputs.source_modified }}
+          EXPECTED_PUBLICATION_HASH: ${{ needs.update.outputs.publication_hash }}
         run: python -m src.verify_published
 
       - name: Live E2E van de consumerclient

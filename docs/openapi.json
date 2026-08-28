@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Kistje Vol Smaak",
-    "description": "Read-only toegang tot de wekelijkse inhoud van het Hoeve Biesland Kistje Vol Smaak. De data wordt automatisch uit de publieke WordPress REST API gehaald en per ISO-week gepubliceerd. Geen authenticatie, geen account, uitsluitend HTTP GET.",
-    "version": "1.0.0"
+    "description": "Read-only toegang tot de wekelijkse inhoud van het Hoeve Biesland Kistje Vol Smaak. De data wordt automatisch uit de publieke WordPress REST API gehaald en per ISO-week gepubliceerd via GitHub Pages. Geen authenticatie, geen account, uitsluitend HTTP GET. Elk weekbestand draagt een content_hash waarmee te controleren is welke publicatieversie wordt geserveerd.",
+    "version": "1.1.0"
   },
   "servers": [
     {
@@ -26,7 +26,9 @@
             "schema": {
               "type": "string",
               "pattern": "^[0-9]{4}-W[0-9]{2}$",
-              "examples": ["2026-W35"]
+              "examples": [
+                "2026-W35"
+              ]
             }
           }
         ],
@@ -35,7 +37,9 @@
             "description": "De kistinhoud voor de gevraagde week",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/WeekBox" }
+                "schema": {
+                  "$ref": "#/components/schemas/WeekBox"
+                }
               }
             }
           },
@@ -54,7 +58,28 @@
             "description": "Status van de publicatie",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Status" }
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/latest.json": {
+      "get": {
+        "operationId": "getKistjeLatest",
+        "summary": "Alle op dit moment gepubliceerde weken in een keer",
+        "description": "Bevat de volledige meest recent opgehaalde bron met alle gepubliceerde weken. Gebruik by-week wanneer je een specifieke week nodig hebt; dat is robuuster dan dit steeds overschreven bestand.",
+        "responses": {
+          "200": {
+            "description": "Alle gepubliceerde weken",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Latest"
+                }
               }
             }
           }
@@ -66,7 +91,13 @@
     "schemas": {
       "WeekBox": {
         "type": "object",
-        "required": ["schema_version", "week", "vegetables", "fruit"],
+        "required": [
+          "schema_version",
+          "week",
+          "vegetables",
+          "fruit",
+          "content_hash"
+        ],
         "properties": {
           "schema_version": {
             "type": "integer",
@@ -76,33 +107,53 @@
             "type": "string",
             "description": "ISO-weeksleutel. Moet exact overeenkomen met de gevraagde week; zo niet, weiger de data."
           },
-          "week_number": { "type": "integer" },
-          "iso_year": { "type": "integer" },
+          "week_number": {
+            "type": "integer"
+          },
+          "iso_year": {
+            "type": "integer"
+          },
           "date_range_text": {
             "type": "string",
             "description": "De datumrange zoals de bron die noemt, bijvoorbeeld '24 t/m 30 aug'."
           },
-          "source": { "$ref": "#/components/schemas/Source" },
+          "source": {
+            "$ref": "#/components/schemas/Source"
+          },
           "vegetables": {
             "type": "array",
             "description": "Alle groente in het kistje.",
-            "items": { "$ref": "#/components/schemas/Product" }
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            }
           },
           "fruit": {
             "type": "array",
             "description": "Al het fruit in het kistje.",
-            "items": { "$ref": "#/components/schemas/Product" }
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            }
           },
           "planner_additions": {
             "type": "array",
             "description": "Vaste plannerregels die niet uit de bron komen, zoals de 6 eieren die altijd bij het kistje horen.",
-            "items": { "$ref": "#/components/schemas/PlannerAddition" }
+            "items": {
+              "$ref": "#/components/schemas/PlannerAddition"
+            }
+          },
+          "content_hash": {
+            "type": "string",
+            "description": "SHA-256 over de inhoud van dit weekdocument, berekend zonder source.fetched_at en zonder het hashveld zelf. Twee runs over dezelfde bron leveren dezelfde hash op, dus hiermee is vast te stellen welke publicatieversie wordt geserveerd. Komt ook voor in week_hashes van status.json.",
+            "pattern": "^[0-9a-f]{64}$"
           }
         }
       },
       "Product": {
         "type": "object",
-        "required": ["name", "category"],
+        "required": [
+          "name",
+          "category"
+        ],
         "properties": {
           "name": {
             "type": "string",
@@ -110,15 +161,25 @@
           },
           "category": {
             "type": "string",
-            "enum": ["vegetable", "fruit"]
+            "enum": [
+              "vegetable",
+              "fruit"
+            ]
           },
           "origin": {
             "type": "string",
             "description": "Herkomst, bijvoorbeeld 'Familie Hospers uit de Noordoostpolder'."
           },
           "certification": {
-            "type": ["string", "null"],
-            "enum": ["biologisch", "biodynamisch", null]
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "biologisch",
+              "biodynamisch",
+              null
+            ]
           },
           "excluded_from_one_person_box": {
             "type": "boolean",
@@ -136,11 +197,19 @@
       },
       "PlannerAddition": {
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "properties": {
-          "name": { "type": "string" },
-          "quantity": { "type": "number" },
-          "unit": { "type": "string" },
+          "name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          },
           "origin": {
             "type": "string",
             "description": "'planner_rule' als het een vaste regel is en niet uit de bron komt."
@@ -150,9 +219,15 @@
       "Source": {
         "type": "object",
         "properties": {
-          "page_id": { "type": "integer" },
-          "url": { "type": "string" },
-          "api_url": { "type": "string" },
+          "page_id": {
+            "type": "integer"
+          },
+          "url": {
+            "type": "string"
+          },
+          "api_url": {
+            "type": "string"
+          },
           "modified": {
             "type": "string",
             "description": "Wanneer Hoeve Biesland de pagina laatst wijzigde, lokale tijd Europe/Amsterdam."
@@ -170,17 +245,71 @@
       "Status": {
         "type": "object",
         "properties": {
-          "status": { "type": "string" },
-          "last_success": { "type": "string" },
-          "source_modified": { "type": "string" },
+          "status": {
+            "type": "string"
+          },
+          "last_success": {
+            "type": "string"
+          },
+          "source_modified": {
+            "type": "string"
+          },
           "published_weeks": {
             "type": "array",
             "description": "Welke weeksleutels op dit moment beschikbaar zijn.",
-            "items": { "type": "string" }
+            "items": {
+              "type": "string"
+            }
           },
           "warnings": {
             "type": "array",
-            "items": { "type": "string" }
+            "items": {
+              "type": "string"
+            }
+          },
+          "week_hashes": {
+            "type": "object",
+            "description": "Weeksleutel naar de content_hash van dat weekbestand.",
+            "additionalProperties": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "publication_hash": {
+            "type": "string",
+            "description": "SHA-256 over alle week_hashes samen: een enkele waarde die de gehele publicatie identificeert. De verificatie na publicatie wacht tot GitHub Pages deze waarde serveert, zodat een oudere maar geldige versie niet als geslaagd telt.",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "observed_modified_history": {
+            "type": "array",
+            "description": "Laatste waargenomen source_modified-waarden, om het publicatieritme van de bron te kunnen meten.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Latest": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "type": "integer"
+          },
+          "source": {
+            "$ref": "#/components/schemas/Source"
+          },
+          "published_weeks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "weeks": {
+            "type": "object",
+            "description": "Weeksleutel naar volledig weekdocument.",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/WeekBox"
+            }
           }
         }
       }

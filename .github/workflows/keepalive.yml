@@ -1,0 +1,65 @@
+name: Scheduled Workflow Keepalive
+
+# GitHub documenteert: "In a public repository, scheduled workflows are
+# automatically disabled when no repository activity has occurred in 60 days."
+# Deze repository is publiek, dus dat geldt hier.
+#
+# GitHub documenteert NIET wat als "repository activity" telt. Of de wekelijkse
+# commits van github-actions[bot] meetellen is dus onbekend, en daar mag de
+# autonome werking niet van afhangen. Deze workflow raakt daarom eens per maand
+# een eigen bestandje aan -- nooit de gepubliceerde kistjesdata.
+#
+# Dit is een best-effort maatregel, geen garantie: als GitHub botcommits niet
+# als activiteit telt, wordt ook deze workflow uitgeschakeld. De statuscheck
+# hieronder maakt dat zichtbaar, en handmatig herstel staat in de README.
+
+on:
+  workflow_dispatch:
+  schedule:
+    # De 3e van elke maand, ruim binnen het venster van 60 dagen.
+    - cron: "23 4 3 * *"
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: keepalive
+  cancel-in-progress: false
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Controleren of de publicatieworkflow nog actief is
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          state=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/update-kistje.yml" --jq '.state')
+          echo "update-kistje.yml state: $state"
+          if [ "$state" != "active" ]; then
+            echo "::error::De publicatieworkflow staat op '$state' in plaats van 'active'. Scheduled runs zijn gestopt; zie de README voor herstel."
+            exit 1
+          fi
+
+      - name: Keepalive-marker bijwerken
+        run: |
+          mkdir -p .github
+          printf 'Laatste keepalive: %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > .github/keepalive
+          printf 'Zie .github/workflows/keepalive.yml en de README voor het waarom.\n' >> .github/keepalive
+
+      - name: Committen bij wijziging
+        run: |
+          if [ -z "$(git status --porcelain .github/keepalive)" ]; then
+            echo "Geen wijziging; niets te committen."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/keepalive
+          git commit -m "chore: scheduled workflow keepalive [skip ci]"
+          git push

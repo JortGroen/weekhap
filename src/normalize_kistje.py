@@ -13,6 +13,8 @@ Twee dingen gebeuren hier die makkelijk stilletjes fout gaan:
 
 from __future__ import annotations
 
+import hashlib
+import json
 import re
 from dataclasses import dataclass
 from datetime import date, datetime, timezone
@@ -150,6 +152,46 @@ def infer_iso_year(week_number: int, date_range_text: str, reference: date) -> i
     return min(mondays, key=lambda year: abs((mondays[year] - reference).days))
 
 
+def canonical_payload(document: dict) -> dict:
+    """De inhoud van een weekdocument zonder run-specifieke velden.
+
+    `fetched_at` verandert elke run zonder dat de inhoud anders is, en
+    `content_hash` kan zichzelf niet meehashen. Beide vallen dus buiten de hash,
+    zodat twee runs over dezelfde bron exact dezelfde hash opleveren.
+    """
+    payload = {key: value for key, value in document.items() if key != "content_hash"}
+    source = dict(payload.get("source") or {})
+    source.pop("fetched_at", None)
+    payload["source"] = source
+    return payload
+
+
+def compute_content_hash(document: dict) -> str:
+    """Stabiele SHA-256 over de inhoud van een weekdocument.
+
+    Beide kanten van de publicatie berekenen dit identiek, zodat versheid met
+    een enkele gelijkheidscontrole te bewijzen is in plaats van met een
+    vergelijking veld voor veld.
+    """
+    serialized = json.dumps(
+        canonical_payload(document),
+        sort_keys=True,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
+    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+
+
+def compute_publication_hash(week_hashes: dict[str, str]) -> str:
+    """Eén hash over de volledige publicatie, afgeleid van de weekhashes."""
+    serialized = json.dumps(week_hashes, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+
+
+def week_hashes_for(documents: dict[str, dict]) -> dict[str, str]:
+    return {key: document["content_hash"] for key, document in documents.items()}
+
+
 def _source_block(payload: dict, fetched_at: datetime) -> dict:
     return {
         "page_id": payload.get("id"),
@@ -190,7 +232,7 @@ def build_week_documents(
         key = iso_week_key(date.fromisocalendar(iso_year, section.week_number, 1))
         if key in documents:
             raise NormalizeError("Dubbele weeksleutel na jaarinferentie: " + key)
-        documents[key] = {
+        document = {
             "schema_version": SCHEMA_VERSION,
             "week": key,
             "week_number": section.week_number,
@@ -201,6 +243,8 @@ def build_week_documents(
             "fruit": [product.as_dict() for product in section.fruit],
             "planner_additions": [dict(addition) for addition in PLANNER_ADDITIONS],
         }
+        document["content_hash"] = compute_content_hash(document)
+        documents[key] = document
     return documents
 
 
@@ -239,12 +283,17 @@ def build_status(
         history.append(modified)
     history = sorted(set(history))[-20:]
 
+    hashes = week_hashes_for(documents)
     return {
         "status": "ok",
         "last_success": fetched_at.isoformat(),
         "source_modified": payload.get("modified"),
         "source_modified_gmt": payload.get("modified_gmt"),
         "published_weeks": sorted(documents),
+        # Deze twee maken versheid bewijsbaar: de verificatie na publicatie
+        # vergelijkt ze met wat de run zojuist genereerde.
+        "week_hashes": hashes,
+        "publication_hash": compute_publication_hash(hashes),
         "warnings": warnings,
         "observed_modified_history": history,
     }

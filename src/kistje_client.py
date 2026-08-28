@@ -1,8 +1,9 @@
-"""Consumerclient: haalt de kistinhoud op voor de maaltijdplanner.
+"""Lichtgewicht consumerclient voor de publieke kistje-API.
 
-Dit is de referentie-implementatie van het consumercontract uit paragraaf 17 van
-het projectplan. Read-only HTTP GET naar de publieke GitHub Pages-URL, meer niet:
-geen plugin, geen login, geen account, geen state.
+Referentie-implementatie van het gepubliceerde contract en tegelijk de client
+waarmee tests/test_e2e.py de publieke JSON uitoefent. Read-only HTTP GET naar
+de GitHub Pages-URL, meer niet: geen plugin, geen login, geen account, geen
+state. De module is niet aan een specifieke afnemer gebonden.
 
 Het belangrijkste gedrag is wat er *niet* gebeurt. Bij een mislukte request,
 ongeldige JSON of een week die niet exact overeenkomt geeft deze module een
