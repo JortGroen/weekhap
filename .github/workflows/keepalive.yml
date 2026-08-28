@@ -21,7 +21,8 @@ on:
 
 permissions:
   contents: write
-  actions: read
+  # Nodig om een uitgeschakelde workflow weer aan te zetten.
+  actions: write
 
 concurrency:
   group: keepalive
@@ -35,14 +36,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
-      - name: Controleren of de publicatieworkflow nog actief is
+      - name: Publicatieworkflow actief houden
+        # Alleen melden is te laat: als de workflow is uitgeschakeld staat de
+        # publicatie stil tot iemand het opmerkt. Zolang deze keepalive zelf
+        # nog draait, kan hij de ander weer aanzetten.
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           state=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/update-kistje.yml" --jq '.state')
           echo "update-kistje.yml state: $state"
-          if [ "$state" != "active" ]; then
-            echo "::error::De publicatieworkflow staat op '$state' in plaats van 'active'. Scheduled runs zijn gestopt; zie de README voor herstel."
+          if [ "$state" = "active" ]; then
+            exit 0
+          fi
+          echo "::warning::Publicatieworkflow stond op '$state'; opnieuw inschakelen."
+          gh api -X PUT "repos/${GITHUB_REPOSITORY}/actions/workflows/update-kistje.yml/enable"
+          new_state=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/update-kistje.yml" --jq '.state')
+          echo "nieuwe state: $new_state"
+          if [ "$new_state" != "active" ]; then
+            echo "::error::Opnieuw inschakelen mislukt; handmatig herstel nodig. Zie de README."
             exit 1
           fi
 

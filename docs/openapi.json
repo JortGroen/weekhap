@@ -231,7 +231,7 @@
           },
           "modified": {
             "type": "string",
-            "description": "Wanneer Hoeve Biesland de pagina laatst wijzigde, lokale tijd Europe/Amsterdam."
+            "description": "Wanneer Hoeve Biesland de pagina laatst wijzigde, lokale tijd Europe/Amsterdam zoals WordPress het levert."
           },
           "modified_gmt": {
             "type": "string",
@@ -239,7 +239,7 @@
           },
           "fetched_at": {
             "type": "string",
-            "description": "Wanneer deze publicatie de bron ophaalde."
+            "description": "Wanneer deze publicatie de bron ophaalde, in UTC (ISO 8601 met Z-suffix)."
           }
         }
       },
@@ -250,7 +250,8 @@
             "type": "string"
           },
           "last_success": {
-            "type": "string"
+            "type": "string",
+            "description": "Tijdstip van de laatste run met een inhoudelijke wijziging, in UTC met Z-suffix."
           },
           "source_modified": {
             "type": "string"

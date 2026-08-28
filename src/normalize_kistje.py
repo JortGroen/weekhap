@@ -201,7 +201,7 @@ def _source_block(payload: dict, fetched_at: datetime) -> dict:
         # Beide bewaren voorkomt een stille uurfout rond de zomertijdwissel.
         "modified": payload.get("modified"),
         "modified_gmt": payload.get("modified_gmt"),
-        "fetched_at": fetched_at.isoformat(),
+        "fetched_at": utc_iso(fetched_at),
     }
 
 
@@ -222,7 +222,7 @@ def build_week_documents(
     fetched_at: datetime | None = None,
 ) -> dict[str, dict]:
     """Bouw per week een publiceerbaar document, gesleuteld op '2026-W35'."""
-    fetched_at = fetched_at or datetime.now(LOCAL_TZ)
+    fetched_at = fetched_at or utc_now()
     reference = reference_date(payload)
     source = _source_block(payload, fetched_at)
 
@@ -286,7 +286,7 @@ def build_status(
     hashes = week_hashes_for(documents)
     return {
         "status": "ok",
-        "last_success": fetched_at.isoformat(),
+        "last_success": utc_iso(fetched_at),
         "source_modified": payload.get("modified"),
         "source_modified_gmt": payload.get("modified_gmt"),
         "published_weeks": sorted(documents),
@@ -324,3 +324,14 @@ def validate_payload(payload: dict) -> None:
 
 def utc_now() -> datetime:
     return datetime.now(timezone.utc)
+
+
+def utc_iso(moment: datetime) -> str:
+    """ISO 8601 in UTC met Z-suffix.
+
+    Machineleesbare tijdstempels staan in UTC, zodat afnemers geen
+    tijdzone hoeven te interpreteren en de zomertijdwissel niets verschuift.
+    De bronvelden `modified` en `modified_gmt` blijven ongemoeid: die komen
+    zo van WordPress.
+    """
+    return moment.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")

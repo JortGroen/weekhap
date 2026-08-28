@@ -19,11 +19,11 @@ from pathlib import Path
 
 from src.fetch_kistje import API_URL, FetchError, fetch_with_fallback
 from src.normalize_kistje import (
-    LOCAL_TZ,
     NormalizeError,
     build_latest,
     build_status,
     build_week_documents,
+    utc_now,
     validate_payload,
 )
 from src.parse_kistje import ParseError, parse_content, quality_warnings
@@ -52,9 +52,14 @@ def _dump(document: dict) -> str:
     return json.dumps(document, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
 
 
-def write_if_changed(path: Path, document: dict) -> bool:
-    """Schrijf alleen als de niet-vluchtige inhoud afwijkt. Geeft True bij schrijven."""
-    if path.exists():
+def write_if_changed(path: Path, document: dict, force: bool = False) -> bool:
+    """Schrijf alleen als de niet-vluchtige inhoud afwijkt. Geeft True bij schrijven.
+
+    Met `force` wordt altijd geschreven. Dat is nodig bij een schemawijziging
+    die alleen vluchtige velden raakt -- zoals een ander tijdstempelformaat --
+    want die zou anders pas doorkomen wanneer de bron toevallig verandert.
+    """
+    if path.exists() and not force:
         try:
             existing = json.loads(path.read_text(encoding="utf-8"))
         except (ValueError, OSError):
@@ -84,7 +89,7 @@ def _read_json(path: Path) -> dict | None:
         return None
 
 
-def run(payload: dict, docs_api: Path = DOCS_API) -> dict:
+def run(payload: dict, docs_api: Path = DOCS_API, force: bool = False) -> dict:
     """Valideer, parse en publiceer een opgehaalde response."""
     validate_payload(payload)
 
@@ -93,17 +98,17 @@ def run(payload: dict, docs_api: Path = DOCS_API) -> dict:
     for warning in warnings:
         print("WAARSCHUWING: " + warning, file=sys.stderr)
 
-    fetched_at = datetime.now(LOCAL_TZ)
+    fetched_at = utc_now()
     documents = build_week_documents(payload, sections, fetched_at=fetched_at)
 
     written: list[str] = []
     for key in sorted(documents):
         target = docs_api / "by-week" / (key + ".json")
-        if write_if_changed(target, documents[key]):
+        if write_if_changed(target, documents[key], force):
             written.append(_display_path(target))
 
     latest_path = docs_api / "latest.json"
-    if write_if_changed(latest_path, build_latest(payload, documents, fetched_at)):
+    if write_if_changed(latest_path, build_latest(payload, documents, fetched_at), force):
         written.append(_display_path(latest_path))
 
     status_path = docs_api / "status.json"
@@ -114,7 +119,7 @@ def run(payload: dict, docs_api: Path = DOCS_API) -> dict:
         warnings,
         previous_status=_read_json(status_path),
     )
-    if write_if_changed(status_path, status):
+    if write_if_changed(status_path, status, force):
         written.append(_display_path(status_path))
 
     return {
@@ -134,6 +139,11 @@ def main(argv: list[str] | None = None) -> int:
         "--raw-out",
         help="Bewaar de ruwe response (handig als workflow artifact bij debugging)",
     )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Herschrijf alles, ook zonder inhoudelijke wijziging (schemamigratie)",
+    )
     args = parser.parse_args(argv)
 
     try:
@@ -148,7 +158,7 @@ def main(argv: list[str] | None = None) -> int:
                 json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8"
             )
 
-        result = run(payload)
+        result = run(payload, force=args.force)
     except (FetchError, ParseError, NormalizeError) as exc:
         print("MISLUKT: %s: %s" % (type(exc).__name__, exc), file=sys.stderr)
         print(

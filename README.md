@@ -148,8 +148,17 @@ Bestanden worden alleen herschreven als de **inhoudelijke** data verandert;
 zou elke run een commit opleveren — 5 per dag, terwijl de bron ongeveer eens per
 week wijzigt.
 
-Gevolg: `last_success` in `status.json` is het tijdstip van de laatste run die
-een *wijziging* opleverde, niet van de laatste geslaagde controle. Wie wil weten
+Alle door de pijplijn gegenereerde tijdstempels (`fetched_at`,
+`last_success`) staan in **UTC met Z-suffix**, zodat afnemers geen tijdzone
+hoeven te interpreteren. De bronvelden `modified` en `modified_gmt` worden
+doorgegeven zoals WordPress ze levert.
+
+Wijzigt alleen het formaat van een vluchtig veld, dan komt dat niet vanzelf
+door: gebruik dan eenmalig `python -m src.build --force`.
+
+Gevolg van de wijzigingsdetectie: `last_success` in `status.json` is het
+tijdstip van de laatste run die een *wijziging* opleverde, niet van de
+laatste geslaagde controle. Wie wil weten
 of de pijplijn nú nog draait, kijkt in de Actions-tab; dat is conform §18 de
 eerste monitoringlaag. De inhoudelijke versheid van de data staat in
 `source_modified`.
@@ -327,9 +336,13 @@ Bewust géén aanpassing van `latest.json`, `status.json` of historische
 weekbestanden: keepalive-activiteit blijft geïsoleerd en herkenbaar, en de
 gepubliceerde data krijgt geen ruis.
 
-**Dit is best-effort, geen garantie.** Telt GitHub botcommits niet als
-activiteit, dan wordt ook deze workflow uitgeschakeld — een scheduled workflow
-kan zichzelf niet uit die toestand redden. De statuscheck maakt het zichtbaar.
+Zolang de keepalive zelf nog draait, zet hij een uitgeschakelde
+publicatieworkflow **automatisch weer aan** via de Actions API. Alleen melden
+zou te laat zijn: de publicatie staat dan stil tot iemand het opmerkt.
+
+**Restrisico.** Telt GitHub botcommits niet als activiteit, dan wordt ook deze
+workflow uitgeschakeld — en een scheduled workflow kan zichzelf niet uit die
+toestand redden. Dat is inherent aan het mechanisme.
 
 **Handmatig herstellen** als scheduled runs toch stoppen: open de workflow in de
 Actions-tab en kies *Enable workflow*, of draai hem één keer via *Run workflow*

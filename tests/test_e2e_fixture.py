@@ -162,3 +162,57 @@ def test_mislukte_run_laat_bestaande_publicatie_staan(tmp_path, payload):
 
     after = (tmp_path / "by-week" / "2026-W35.json").read_text(encoding="utf-8")
     assert after == before
+
+
+# --- Tijdstempels in UTC ---------------------------------------------------
+
+
+def test_tijdstempels_zijn_utc_met_z_suffix(published):
+    """Machineleesbare tijdstempels staan in UTC, zonder tijdzone-interpretatie."""
+    import re
+
+    docs_api, _ = published
+    utc_pattern = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
+
+    document = json.loads(
+        (docs_api / "by-week" / "2026-W35.json").read_text(encoding="utf-8")
+    )
+    assert utc_pattern.match(document["source"]["fetched_at"])
+
+    status = json.loads((docs_api / "status.json").read_text(encoding="utf-8"))
+    assert utc_pattern.match(status["last_success"])
+
+    # De bronvelden komen zo van WordPress en blijven ongemoeid.
+    assert document["source"]["modified"] == "2026-08-27T12:20:54"
+    assert document["source"]["modified_gmt"] == "2026-08-27T10:20:54"
+
+
+def test_content_hash_negeert_fetched_at(payload):
+    """Een ander ophaalmoment mag de hash niet veranderen."""
+    from datetime import datetime, timezone
+
+    from src.normalize_kistje import build_week_documents
+    from src.parse_kistje import parse_content
+
+    sections = parse_content(payload["content"]["rendered"])
+    first = build_week_documents(
+        payload, sections, fetched_at=datetime(2026, 8, 28, 12, 0, tzinfo=timezone.utc)
+    )
+    second = build_week_documents(
+        payload, sections, fetched_at=datetime(2026, 9, 1, 6, 30, tzinfo=timezone.utc)
+    )
+
+    assert first["2026-W35"]["source"]["fetched_at"] != second["2026-W35"]["source"]["fetched_at"]
+    assert first["2026-W35"]["content_hash"] == second["2026-W35"]["content_hash"]
+
+
+# --- Geforceerd herschrijven ----------------------------------------------
+
+
+def test_force_herschrijft_ook_zonder_inhoudelijke_wijziging(tmp_path, payload):
+    """Nodig bij een schemawijziging die alleen vluchtige velden raakt."""
+    run(payload, docs_api=tmp_path)
+    assert run(payload, docs_api=tmp_path)["written"] == []
+
+    forced = run(payload, docs_api=tmp_path, force=True)
+    assert len(forced["written"]) == 4  # twee weken, latest en status
