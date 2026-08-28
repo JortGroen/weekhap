@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Kistje Vol Smaak",
-    "description": "Read-only toegang tot de wekelijkse inhoud van het Hoeve Biesland Kistje Vol Smaak. De data wordt automatisch uit de publieke WordPress REST API gehaald en per ISO-week gepubliceerd via GitHub Pages. Geen authenticatie, geen account, uitsluitend HTTP GET. Elk weekbestand draagt een content_hash waarmee te controleren is welke publicatieversie wordt geserveerd.",
+    "description": "Read-only toegang tot de wekelijkse inhoud van het Hoeve Biesland Kistje Vol Smaak. Automatisch uit de publieke WordPress REST API gehaald en per ISO-week gepubliceerd via GitHub Pages. Geen authenticatie. Elk weekbestand draagt een content_hash die de publicatieversie identificeert.",
     "version": "1.1.0"
   },
   "servers": [
@@ -16,7 +16,7 @@
       "get": {
         "operationId": "getKistjeWeek",
         "summary": "Haal de kistinhoud voor een specifieke ISO-week op",
-        "description": "Geeft groente, fruit en plannerregels voor een week. De week wordt bepaald door de ISO-week van de ophaaldonderdag: het kistje wordt op donderdag opgehaald, dus een planning die op maandag start gebruikt het kistje van de donderdag ervoor. Retourneert 404 als de week niet is gepubliceerd; val in dat geval nooit terug op een andere week.",
+        "description": "Geeft groente, fruit en plannerregels voor een ISO-week. Het kistje wordt op donderdag opgehaald: gebruik de ISO-week van de meest recente donderdag op of voor de planstart. Bij 404 is de week niet gepubliceerd; val nooit terug op een andere week.",
         "parameters": [
           {
             "name": "week",
@@ -64,7 +64,8 @@
               }
             }
           }
-        }
+        },
+        "description": "Welke weeksleutels beschikbaar zijn, wanneer de bron laatst wijzigde, en de content_hash per week plus een publication_hash over de hele publicatie."
       }
     },
     "/api/latest.json": {
@@ -286,6 +287,10 @@
             "items": {
               "type": "string"
             }
+          },
+          "source_modified_gmt": {
+            "type": "string",
+            "description": "Dezelfde bronwijziging als source_modified, maar in UTC. source_modified staat in lokale tijd Europe/Amsterdam."
           }
         }
       },
