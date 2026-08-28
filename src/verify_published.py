@@ -82,7 +82,9 @@ def fetch_json(url: str, backoffs: tuple[int, ...] = BACKOFF_SECONDS, sleep=time
     )
 
 
-def verify_week_document(document: dict, expected_key: str) -> None:
+def verify_week_document(
+    document: dict, expected_key: str, expected_modified: str = ""
+) -> None:
     """Controleer het contract dat de maaltijdplanner mag verwachten."""
     if document.get("schema_version") != SCHEMA_VERSION:
         raise VerificationError(
@@ -103,6 +105,12 @@ def verify_week_document(document: dict, expected_key: str) -> None:
         raise VerificationError("source.modified ontbreekt")
     if not source.get("fetched_at"):
         raise VerificationError("source.fetched_at ontbreekt")
+    # Het weekbestand moet uit dezelfde publicatie komen als status.json.
+    if expected_modified and source.get("modified") != expected_modified:
+        raise VerificationError(
+            "Week %s serveert source.modified=%r, verwacht %r"
+            % (expected_key, source.get("modified"), expected_modified)
+        )
 
     if not document.get("vegetables"):
         raise VerificationError("Week %s bevat geen groente" % expected_key)
@@ -120,12 +128,58 @@ def verify_week_document(document: dict, expected_key: str) -> None:
         )
 
 
+def fetch_fresh_status(
+    base_url: str,
+    expected_modified: str = "",
+    backoffs: tuple[int, ...] = BACKOFF_SECONDS,
+    sleep=time.sleep,
+) -> dict:
+    """Haal status.json op en wacht tot Pages de zojuist gepubliceerde versie serveert.
+
+    Zonder deze controle valideert de job mogelijk nog de vorige versie: Pages
+    herbouwt asynchroon na de push, dus een geslaagde verificatie zou niets
+    zeggen over wat er net is gepubliceerd. Is `expected_modified` leeg -- bij
+    een handmatige run buiten de workflow -- dan wordt alleen opgehaald.
+    """
+    status = fetch_json(base_url + "/api/status.json", backoffs, sleep)
+    if not expected_modified:
+        return status
+
+    attempts = len(backoffs) + 1
+    for attempt in range(1, attempts + 1):
+        served = status.get("source_modified")
+        if served == expected_modified:
+            if attempt > 1:
+                print("Pages is bijgewerkt na %d pogingen." % attempt, flush=True)
+            return status
+
+        if attempt > len(backoffs):
+            break
+        delay = backoffs[attempt - 1]
+        print(
+            "Pages serveert nog source_modified=%r, verwacht %r; "
+            "opnieuw over %ds" % (served, expected_modified, delay),
+            flush=True,
+        )
+        sleep(delay)
+        status = fetch_json(base_url + "/api/status.json", (), sleep)
+
+    raise VerificationError(
+        "Pages serveert nog steeds source_modified=%r terwijl de run %r "
+        "publiceerde. De publicatie is niet doorgekomen."
+        % (status.get("source_modified"), expected_modified)
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     base_url = default_base_url()
+    expected_modified = os.environ.get("EXPECTED_SOURCE_MODIFIED", "").strip()
     print("Verifieren via publieke URL: " + base_url, flush=True)
+    if expected_modified:
+        print("Verwachte source_modified: " + expected_modified, flush=True)
 
     try:
-        status = fetch_json(base_url + "/api/status.json")
+        status = fetch_fresh_status(base_url, expected_modified)
         published_weeks = status.get("published_weeks") or []
         if not published_weeks:
             raise VerificationError("status.json noemt geen gepubliceerde weken")
@@ -134,7 +188,7 @@ def main(argv: list[str] | None = None) -> int:
         for week_key in published_weeks:
             url = "%s/api/by-week/%s.json" % (base_url, week_key)
             document = fetch_json(url)
-            verify_week_document(document, week_key)
+            verify_week_document(document, week_key, expected_modified)
             print("  OK %s (%d groente, %d fruit)" % (
                 week_key, len(document["vegetables"]), len(document["fruit"])
             ), flush=True)
@@ -155,6 +209,10 @@ def main(argv: list[str] | None = None) -> int:
         print("E2E-VERIFICATIE MISLUKT: %s" % exc, file=sys.stderr)
         return 1
 
+    if expected_modified:
+        print(
+            "Versheid bevestigd: Pages serveert de publicatie van deze run."
+        )
     print("E2E-verificatie geslaagd: publieke data voldoet aan het contract.")
     return 0
 

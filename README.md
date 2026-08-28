@@ -231,3 +231,44 @@ Geef de assistent daarbij deze regels mee:
 python -m pytest -q -m "not live"      # unit- en fixturetests, geen netwerk
 python -m pytest tests/test_e2e.py -v -s   # echte HTTP naar de publieke URL
 ```
+
+## Scope van deze repository
+
+De kern is smal en bewust zo gehouden:
+
+```
+fetch → parse → validate → publish → verify
+```
+
+De pijplijn hangt van geen enkele consument af. `src/kistje_client.py` en
+`docs/openapi.json` zijn optionele hulpmiddelen voor wie de data afneemt, geen
+onderdeel van de publicatieketen. De client wordt wel door `tests/test_e2e.py`
+gebruikt om de publieke JSON te verifiëren; `openapi.json` is puur documentatie
+van het gepubliceerde contract en wordt door niets in deze repo aangeroepen.
+Beide kunnen worden verwijderd zonder dat de pijplijn stopt met werken.
+
+## Versheidscontrole in `verify-published`
+
+GitHub Pages herbouwt asynchroon na de push. Zonder extra controle zou de
+verificatiejob de vórige gepubliceerde versie kunnen valideren en tóch groen
+worden — het contract klopt immers, alleen de inhoud is oud.
+
+Daarom geeft de `update`-job de zojuist gepubliceerde `source_modified` door als
+job-output. `verify-published` krijgt die binnen als
+`EXPECTED_SOURCE_MODIFIED` en wacht met backoff (15/30/60/90/120s) tot Pages
+diezelfde waarde serveert — zowel in `status.json` als in elk weekbestand.
+Blijft Pages de oude versie serveren, dan faalt de job expliciet.
+
+Bij een handmatige run buiten de workflow is de variabele leeg; dan wordt alleen
+het contract gecontroleerd en niet op versheid gewacht.
+
+## Bekende beperking: scheduled workflows en inactiviteit
+
+GitHub schakelt scheduled workflows uit na 60 dagen repository-inactiviteit.
+Deze repo commit ongeveer wekelijks, maar die commits komen van
+`github-actions[bot]`, en of botcommits als activiteit tellen is niet
+gedocumenteerd gedrag waar je op moet bouwen.
+
+Detecteren: staat in de Actions-tab de melding dat scheduled runs zijn
+uitgeschakeld, dan is dit gebeurd. Herstellen: één handmatige
+`workflow_dispatch` of een gewone push zet het weer aan.

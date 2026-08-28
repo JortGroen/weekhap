@@ -22,6 +22,10 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    outputs:
+      # Doorgegeven aan verify-published, zodat die kan controleren dat Pages
+      # de publicatie van deze run serveert en niet nog de vorige.
+      source_modified: ${{ steps.publish.outputs.source_modified }}
 
     steps:
       - name: Checkout
@@ -47,7 +51,12 @@ jobs:
         run: python -m pytest tests/test_live_api.py -v -s
 
       - name: Live fetch, parse en publiceer
-        run: python -m src.build --raw-out raw_response.json
+        id: publish
+        run: |
+          python -m src.build --raw-out raw_response.json
+          modified=$(python -c "import json; print(json.load(open('docs/api/status.json'))['source_modified'])")
+          echo "source_modified=$modified" >> "$GITHUB_OUTPUT"
+          echo "Gepubliceerde source_modified: $modified"
 
       - name: Ruwe response bewaren voor debugging
         if: always()
@@ -102,6 +111,7 @@ jobs:
       - name: Publieke Pages-URL uitlezen en valideren
         env:
           PAGES_BASE_URL: ${{ vars.PAGES_BASE_URL }}
+          EXPECTED_SOURCE_MODIFIED: ${{ needs.update.outputs.source_modified }}
         run: python -m src.verify_published
 
       - name: Live E2E van de consumerclient
