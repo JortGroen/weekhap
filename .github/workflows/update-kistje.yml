@@ -46,8 +46,11 @@ jobs:
         run: python -m pytest -q -m "not live"
 
       - name: Live integratietest tegen de WordPress API
-        # Bewaakt dat de huidige bron nog parseerbaar is. Faalt dit, dan
-        # stopt de run voordat er iets wordt gepubliceerd.
+        # Alleen bij handmatige runs. Deze test doet een eigen fetch, en op
+        # het schema zou dat het aantal verzoeken aan de bron verdubbelen.
+        # De bron blijkt gevoelig voor volume (HTTP 403 vanaf runner-IP's),
+        # dus scheduled runs raken de bron precies een keer.
+        if: github.event_name == 'workflow_dispatch'
         run: python -m pytest tests/test_live_api.py -v -s
 
       - name: Live fetch, parse en publiceer

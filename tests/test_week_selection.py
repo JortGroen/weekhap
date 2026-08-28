@@ -126,3 +126,59 @@ def test_fallback_faalt_expliciet_als_beide_routes_falen():
 
     with pytest.raises(FetchError, match="Zowel de primaire bron als discovery"):
         fetch_with_fallback(backoffs=(), sleep=lambda _: None, session=_Session())
+
+
+# --- Weigeringen (401/403/429) --------------------------------------------
+
+
+class _StatusSession:
+    """Session-stub die altijd dezelfde HTTP-status teruggeeft."""
+
+    def __init__(self, status):
+        self.status = status
+        self.calls = 0
+
+    def get(self, url, headers=None, timeout=None):
+        self.calls += 1
+
+        class _Response:
+            status_code = self.status
+
+            def json(self_inner):
+                return {}
+
+        return _Response()
+
+
+@pytest.mark.parametrize("status", [401, 403, 429])
+def test_weigering_wordt_niet_geretryd(status):
+    """Een weigering is geen storing: herhalen helpt niet en verergert een rate-limit."""
+    from src.fetch_kistje import FetchBlocked, fetch_page
+
+    session = _StatusSession(status)
+    with pytest.raises(FetchBlocked, match="weigert het verzoek"):
+        fetch_page(backoffs=(10, 30, 90), sleep=lambda _: None, session=session)
+
+    assert session.calls == 1, "weigering mag maar een keer worden opgevraagd"
+
+
+def test_weigering_slaat_discovery_over():
+    """Discovery loopt over dezelfde host en wordt dus net zo geweigerd."""
+    from src.fetch_kistje import FetchBlocked, fetch_with_fallback
+
+    session = _StatusSession(403)
+    with pytest.raises(FetchBlocked):
+        fetch_with_fallback(backoffs=(10,), sleep=lambda _: None, session=session)
+
+    assert session.calls == 1
+
+
+def test_serverfout_wordt_wel_geretryd():
+    """Een 500 is wel een storing en verdient de volledige retry."""
+    from src.fetch_kistje import FetchError, fetch_page
+
+    session = _StatusSession(500)
+    with pytest.raises(FetchError):
+        fetch_page(backoffs=(1, 2), sleep=lambda _: None, session=session)
+
+    assert session.calls == 3

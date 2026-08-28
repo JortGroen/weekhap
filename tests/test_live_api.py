@@ -18,7 +18,13 @@ from datetime import datetime
 
 import pytest
 
-from src.fetch_kistje import API_URL, PAGE_ID, FetchError, fetch_with_fallback
+from src.fetch_kistje import (
+    API_URL,
+    PAGE_ID,
+    FetchBlocked,
+    FetchError,
+    fetch_with_fallback,
+)
 from src.normalize_kistje import (
     PAGE_SLUG,
     build_latest,
@@ -35,8 +41,12 @@ pytestmark = pytest.mark.live
 def live_payload() -> dict:
     try:
         return fetch_with_fallback()
+    except FetchBlocked as exc:
+        # Een actieve weigering is een echte bevinding, geen storing:
+        # stilzwijgend skippen zou de blokkade onzichtbaar maken.
+        pytest.fail("De bron weigert deze runner: %s" % exc)
     except FetchError as exc:
-        pytest.skip("Hoeve Biesland niet bereikbaar: %s" % exc)
+        pytest.skip("Hoeve Biesland tijdelijk niet bereikbaar: %s" % exc)
 
 
 @pytest.fixture(scope="module")

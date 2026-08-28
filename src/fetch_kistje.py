@@ -34,6 +34,20 @@ class FetchError(RuntimeError):
     """De bron kon niet betrouwbaar worden opgehaald."""
 
 
+class FetchBlocked(FetchError):
+    """De bron weigert het verzoek actief (401/403/429).
+
+    Dit is geen tijdelijke storing maar een bewuste weigering, vaak een
+    rate-limit of een blokkade op het IP-bereik van de runner. Opnieuw
+    proberen helpt niet en verergert een rate-limit alleen maar, dus deze
+    fout wordt niet geretryd.
+    """
+
+
+# Statussen die een weigering betekenen in plaats van een storing.
+BLOCKING_STATUSES = frozenset({401, 403, 429})
+
+
 def fetch_page(
     url: str = API_URL,
     timeout: int = TIMEOUT_SECONDS,
@@ -53,6 +67,13 @@ def fetch_page(
     for attempt in range(1, attempts + 1):
         try:
             response = client.get(url, headers=HEADERS, timeout=timeout)
+            if response.status_code in BLOCKING_STATUSES:
+                raise FetchBlocked(
+                    "De bron weigert het verzoek: HTTP %d van %s. "
+                    "Waarschijnlijk een rate-limit of een blokkade op het "
+                    "IP-bereik van de runner; opnieuw proberen helpt niet."
+                    % (response.status_code, url)
+                )
             if not 200 <= response.status_code < 300:
                 raise FetchError(
                     "Onverwachte HTTP-status %d van %s" % (response.status_code, url)
@@ -66,6 +87,8 @@ def fetch_page(
                     "Response is geen JSON-object maar %s" % type(payload).__name__
                 )
             return payload
+        except FetchBlocked:
+            raise
         except Exception as exc:  # noqa: BLE001 - elke fout is een retry waard
             last_error = exc
             if attempt <= len(backoffs):
@@ -100,6 +123,13 @@ def fetch_via_discovery(
     for attempt in range(1, attempts + 1):
         try:
             response = client.get(url, headers=HEADERS, timeout=timeout)
+            if response.status_code in BLOCKING_STATUSES:
+                raise FetchBlocked(
+                    "De bron weigert het verzoek: HTTP %d van %s. "
+                    "Waarschijnlijk een rate-limit of een blokkade op het "
+                    "IP-bereik van de runner; opnieuw proberen helpt niet."
+                    % (response.status_code, url)
+                )
             if not 200 <= response.status_code < 300:
                 raise FetchError(
                     "Onverwachte HTTP-status %d van %s" % (response.status_code, url)
@@ -111,6 +141,8 @@ def fetch_via_discovery(
             if not isinstance(page, dict):
                 raise FetchError("Discovery gaf geen paginaobject terug")
             return page
+        except FetchBlocked:
+            raise
         except Exception as exc:  # noqa: BLE001 - elke fout is een retry waard
             last_error = exc
             if attempt <= len(backoffs):
@@ -132,6 +164,9 @@ def fetch_with_fallback(
     """Haal de pagina op id op; lukt dat niet, probeer dan de slug-route."""
     try:
         return fetch_page(url, timeout, backoffs, sleep, session)
+    except FetchBlocked:
+        # Discovery loopt over dezelfde host en wordt dus net zo geweigerd.
+        raise
     except FetchError as primary_error:
         print("Primaire bron mislukt (%s); discovery via slug wordt geprobeerd"
               % primary_error)
