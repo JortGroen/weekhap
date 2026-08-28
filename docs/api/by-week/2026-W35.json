@@ -25,7 +25,7 @@
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
       "name": "Bananen",
-      "origin": "uit Ecuador",
+      "origin": "Ecuador",
       "source_line": "Bananen uit Ecuador (Biologisch)"
     },
     {
@@ -50,7 +50,7 @@
   "schema_version": 1,
   "source": {
     "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
-    "fetched_at": "2026-08-28T14:15:16.164545+02:00",
+    "fetched_at": "2026-08-28T14:47:57.856029+02:00",
     "modified": "2026-08-27T12:20:54",
     "modified_gmt": "2026-08-27T10:20:54",
     "page_id": 19172,
@@ -63,7 +63,7 @@
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
       "name": "Snijbiet",
-      "origin": "uit eigen tuin",
+      "origin": "eigen tuin",
       "source_line": "Snijbiet uit eigen tuin (Biologisch)"
     },
     {
@@ -81,7 +81,7 @@
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
       "name": "Courgette",
-      "origin": "uit eigen tuin en familie Roozendaal uit Hoeksche Waard",
+      "origin": "eigen tuin en familie Roozendaal uit Hoeksche Waard",
       "source_line": "Courgette uit eigen tuin en familie Roozendaal uit Hoeksche Waard (Biologisch)"
     },
     {

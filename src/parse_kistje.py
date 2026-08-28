@@ -18,7 +18,9 @@ WEEK_HEADING_RE = re.compile(r"^\s*week\s+(\d{1,2})\s*$", re.IGNORECASE)
 CERTIFICATION_RE = re.compile(r"\((biologisch|biodynamisch)\)", re.IGNORECASE)
 # De bron zet de markering los achter de regel, soms met dubbele spatie.
 EXCLUSION_MARKER_RE = re.compile(r"\s*\*\s*$")
-LEADING_CONNECTOR_RE = re.compile(r"^van\s+", re.IGNORECASE)
+# Het schemavoorbeeld toont origin zonder voorzetsel ("eigen tuin", niet
+# "uit eigen tuin"), dus wordt een leidend "van"/"uit" weggehaald.
+LEADING_CONNECTOR_RE = re.compile(r"^(?:van|uit)\s+", re.IGNORECASE)
 
 VEGETABLE_LABEL_RE = re.compile(r"groente", re.IGNORECASE)
 FRUIT_LABEL_RE = re.compile(r"fruit", re.IGNORECASE)
@@ -179,6 +181,16 @@ def _validate_sections(sections: list[WeekSection]) -> None:
             )
         seen.add(section.week_number)
 
+        if not 1 <= section.week_number <= 53:
+            raise ParseError(
+                "Ongeldig weeknummer: %d (verwacht 1..53)" % section.week_number
+            )
+        if not section.date_range_text:
+            raise ParseError(
+                "Week %d heeft geen datumrange; die is nodig voor betrouwbare "
+                "jaarinferentie" % section.week_number
+            )
+
         if not section.vegetables:
             raise ParseError(
                 "Week " + str(section.week_number) + " bevat geen groenteproducten"
@@ -203,6 +215,4 @@ def quality_warnings(sections: list[WeekSection]) -> list[str]:
                 "Week %d: %d fruitsoorten gevonden, normaliter 4"
                 % (section.week_number, len(section.fruit))
             )
-        if not section.date_range_text:
-            warnings.append("Week %d: geen datumrange gevonden" % section.week_number)
     return warnings

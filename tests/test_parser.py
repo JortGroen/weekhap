@@ -219,3 +219,45 @@ def test_lege_content_in_response_wordt_afgewezen(payload):
     broken["content"] = {"rendered": ""}
     with pytest.raises(NormalizeError, match="leeg"):
         validate_payload(broken)
+
+
+# --- Origin zonder voorzetsel ---------------------------------------------
+
+
+def test_origin_bevat_geen_leidend_voorzetsel(sections):
+    """Conform het schemavoorbeeld: 'eigen tuin', niet 'uit eigen tuin'."""
+    week35 = _by_week(sections, 35)
+    snijbiet = next(p for p in week35.vegetables if p.name == "Snijbiet")
+    assert snijbiet.origin == "eigen tuin"
+
+    bananen = next(p for p in week35.fruit if p.name == "Bananen")
+    assert bananen.origin == "Ecuador"
+
+    for section in sections:
+        for product in section.vegetables + section.fruit:
+            first_word = product.origin.split(" ")[0].lower()
+            assert first_word not in ("van", "uit"), product.origin
+
+
+# --- Aanvullende harde validaties -----------------------------------------
+
+
+def test_week_zonder_datumrange_wordt_afgewezen():
+    """De datumrange is nodig om het ISO-jaar betrouwbaar af te leiden."""
+    html = (
+        "<h3><strong>Week 12</strong></h3>"
+        "<div> Kistjes Groente:<ul><li><b>Prei</b> uit eigen tuin</li></ul></div>"
+        "<div> Kistje Fruit:<ul><li><b>Appel</b> uit Betuwe</li></ul></div>"
+    )
+    with pytest.raises(ParseError, match="geen datumrange"):
+        parse_content(html)
+
+
+def test_ongeldig_weeknummer_wordt_afgewezen():
+    html = (
+        "<h3><strong>Week 54</strong></h3><h3>1 t/m 7 jan</h3>"
+        "<div> Kistjes Groente:<ul><li><b>Prei</b> uit eigen tuin</li></ul></div>"
+        "<div> Kistje Fruit:<ul><li><b>Appel</b> uit Betuwe</li></ul></div>"
+    )
+    with pytest.raises(ParseError, match="Ongeldig weeknummer"):
+        parse_content(html)

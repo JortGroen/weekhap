@@ -50,7 +50,7 @@
   "schema_version": 1,
   "source": {
     "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
-    "fetched_at": "2026-08-28T14:15:16.164545+02:00",
+    "fetched_at": "2026-08-28T14:47:57.856029+02:00",
     "modified": "2026-08-27T12:20:54",
     "modified_gmt": "2026-08-27T10:20:54",
     "page_id": 19172,
@@ -63,7 +63,7 @@
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
       "name": "Oranje pompoen",
-      "origin": "uit eigen tuin & van David Luijendijk uit s’ Gravenzande",
+      "origin": "eigen tuin & van David Luijendijk uit s’ Gravenzande",
       "source_line": "Oranje pompoen uit eigen tuin & van David Luijendijk uit s’ Gravenzande (Biologisch)"
     },
     {
@@ -90,7 +90,7 @@
       "excluded_from_one_person_box": true,
       "included_in_two_person_box": true,
       "name": "Eikenbladsla",
-      "origin": "uit eigen tuin",
+      "origin": "eigen tuin",
       "source_line": "Eikenbladsla uit eigen tuin (Biologisch) *"
     }
   ],

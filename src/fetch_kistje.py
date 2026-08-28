@@ -81,6 +81,69 @@ def fetch_page(
     ) from last_error
 
 
+def fetch_via_discovery(
+    url: str = DISCOVERY_URL,
+    timeout: int = TIMEOUT_SECONDS,
+    backoffs: tuple[int, ...] = BACKOFF_SECONDS,
+    sleep=time.sleep,
+    session=None,
+) -> dict:
+    """Zoek de pagina op slug in plaats van op id.
+
+    Vangnet voor het geval het page-id ooit verandert. De endpoint geeft een
+    lijst terug, dus die wordt hier tot een enkele pagina teruggebracht.
+    """
+    client = session or requests
+    attempts = len(backoffs) + 1
+    last_error: Exception | None = None
+
+    for attempt in range(1, attempts + 1):
+        try:
+            response = client.get(url, headers=HEADERS, timeout=timeout)
+            if not 200 <= response.status_code < 300:
+                raise FetchError(
+                    "Onverwachte HTTP-status %d van %s" % (response.status_code, url)
+                )
+            payload = response.json()
+            if not isinstance(payload, list) or not payload:
+                raise FetchError("Discovery gaf geen resultaten terug")
+            page = payload[0]
+            if not isinstance(page, dict):
+                raise FetchError("Discovery gaf geen paginaobject terug")
+            return page
+        except Exception as exc:  # noqa: BLE001 - elke fout is een retry waard
+            last_error = exc
+            if attempt <= len(backoffs):
+                sleep(backoffs[attempt - 1])
+
+    raise FetchError(
+        "Discovery via %s mislukt na %d pogingen: %s" % (url, attempts, last_error)
+    ) from last_error
+
+
+def fetch_with_fallback(
+    url: str = API_URL,
+    discovery_url: str = DISCOVERY_URL,
+    timeout: int = TIMEOUT_SECONDS,
+    backoffs: tuple[int, ...] = BACKOFF_SECONDS,
+    sleep=time.sleep,
+    session=None,
+) -> dict:
+    """Haal de pagina op id op; lukt dat niet, probeer dan de slug-route."""
+    try:
+        return fetch_page(url, timeout, backoffs, sleep, session)
+    except FetchError as primary_error:
+        print("Primaire bron mislukt (%s); discovery via slug wordt geprobeerd"
+              % primary_error)
+        try:
+            return fetch_via_discovery(discovery_url, timeout, backoffs, sleep, session)
+        except FetchError as discovery_error:
+            raise FetchError(
+                "Zowel de primaire bron als discovery mislukten. "
+                "Primair: %s. Discovery: %s" % (primary_error, discovery_error)
+            ) from discovery_error
+
+
 def main() -> int:
     import argparse
 
@@ -88,7 +151,7 @@ def main() -> int:
     parser.add_argument("--out", help="Schrijf de ruwe response naar dit bestand")
     args = parser.parse_args()
 
-    payload = fetch_page()
+    payload = fetch_with_fallback()
     if args.out:
         with open(args.out, "w", encoding="utf-8") as handle:
             json.dump(payload, handle, ensure_ascii=False, indent=2)

@@ -41,6 +41,11 @@ jobs:
         # na de publicatie, tegen de publieke URL.
         run: python -m pytest -q -m "not live"
 
+      - name: Live integratietest tegen de WordPress API
+        # Bewaakt dat de huidige bron nog parseerbaar is. Faalt dit, dan
+        # stopt de run voordat er iets wordt gepubliceerd.
+        run: python -m pytest tests/test_live_api.py -v -s
+
       - name: Live fetch, parse en publiceer
         run: python -m src.build --raw-out raw_response.json
 

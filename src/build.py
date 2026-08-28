@@ -17,7 +17,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-from src.fetch_kistje import API_URL, FetchError, fetch_page
+from src.fetch_kistje import API_URL, FetchError, fetch_with_fallback
 from src.normalize_kistje import (
     LOCAL_TZ,
     NormalizeError,
@@ -141,7 +141,7 @@ def main(argv: list[str] | None = None) -> int:
             payload = json.loads(Path(args.from_file).read_text(encoding="utf-8"))
         else:
             print("Ophalen: " + API_URL)
-            payload = fetch_page()
+            payload = fetch_with_fallback()
 
         if args.raw_out:
             Path(args.raw_out).write_text(
