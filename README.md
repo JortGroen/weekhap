@@ -108,15 +108,38 @@ stilletjes de verkeerde week op.
 
 ## Schedule
 
-De workflow draait 5× per dag (`17 6,9,12,15,18 * * *` UTC) plus handmatig via
+De workflow draait 2× per dag (`17 12,18 * * *` UTC) plus handmatig via
 `workflow_dispatch`.
 
-De waargenomen wijziging van de bron was **donderdag 27-08-2026 om 12:20** —
-niet vrijdag 12:00, zoals soms wordt aangenomen. Eén waarneming is echter te
-weinig om een ritme op vast te leggen, dus wordt er bewust breed gecontroleerd.
+| UTC | zomertijd (CEST) | wintertijd (CET) | rol |
+|---|---|---|---|
+| 12:17 | 14:17 | 13:17 | vangt de publicatie |
+| 18:17 | 20:17 | 19:17 | vangnet als de eerste run faalt |
+
+De waargenomen wijziging van de bron was **donderdag 27-08-2026 om 12:20**
+lokaal — niet vrijdag 12:00, zoals soms wordt aangenomen. Lokaal 12:20 is 10:20
+UTC in de zomer maar 11:20 UTC in de winter, dus de eerste run staat bewust ná
+beide momenten. Detectielatentie is daarmee ongeveer twee uur.
+
+Dit was eerder 5× per dag. Dat is teruggebracht nadat de bron de GitHub-runners
+tijdelijk met HTTP 403 weigerde, vermoedelijk een rate-limit. Samen met de
+maatregel dat de live API-test alleen nog bij handmatige runs draait, gaat het
+bronvolume van ongeveer tien verzoeken per dag naar twee.
+
+Eén waarneming is te weinig om een publicatieritme op vast te leggen.
 `status.json` houdt in `observed_modified_history` de laatste 20 waargenomen
-`modified`-waarden bij; daarmee is het publicatieritme na een paar weken
-meetbaar en kan de frequentie onderbouwd omlaag.
+`modified`-waarden bij; daarmee is het ritme na een paar weken meetbaar en kan
+het schema onderbouwd worden bijgesteld.
+
+### Als de bron opnieuw met 403 weigert
+
+Een 401, 403 of 429 wordt behandeld als een weigering, niet als een storing: er
+wordt niet geretryd en de discovery-route wordt overgeslagen, want die loopt
+over dezelfde host. Herhalen zou een rate-limit alleen verergeren. De workflow
+faalt zichtbaar en de bestaande publicatie blijft intact.
+
+Blijft het terugkeren, verlaag dan verder — bijvoorbeeld naar één run per dag,
+of alleen op donderdag en vrijdag.
 
 ## Commit-gedrag en `last_success`
 

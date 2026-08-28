@@ -3,11 +3,18 @@ name: Update Kistje Vol Smaak
 on:
   workflow_dispatch:
   schedule:
-    # Vijf keer per dag in UTC. De bron blijkt rond het middaguur te wijzigen,
-    # maar het exacte publicatieritme is nog niet met genoeg waarnemingen
-    # vastgesteld, dus wordt er bewust breed gecontroleerd in plaats van op een
-    # aangenomen tijdstip. Zie observed_modified_history in docs/api/status.json.
-    - cron: "17 6,9,12,15,18 * * *"
+    # Twee keer per dag, teruggebracht van vijf nadat de bron de runners
+    # tijdelijk met HTTP 403 weigerde -- vermoedelijk een rate-limit.
+    #
+    # De tijden volgen de waargenomen publicatie (donderdag ~12:20 lokaal).
+    # Dat is 10:20 UTC in de zomer en 11:20 UTC in de winter, dus de eerste
+    # run staat na beide momenten:
+    #   12:17 UTC = 14:17 CEST / 13:17 CET  -> vangt de publicatie binnen ~2u
+    #   18:17 UTC = 20:17 CEST / 19:17 CET  -> vangnet als de eerste faalt
+    #
+    # Eén waarneming is weinig; observed_modified_history in status.json
+    # verzamelt er meer, zodat dit later onderbouwd bijgesteld kan worden.
+    - cron: "17 12,18 * * *"
 
 # Geen push-trigger: de workflow commit zelf naar dezelfde branch en zou zich
 # anders eindeloos opnieuw aanroepen.
