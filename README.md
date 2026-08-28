@@ -156,3 +156,78 @@ Er worden geen secrets of persoonsgegevens opgeslagen; de repository mag publiek
 zijn. De workflow gebruikt alleen de standaard `GITHUB_TOKEN` met
 `permissions: contents: write`. Broninhoud wordt uitsluitend als data behandeld:
 er wordt geen HTML of script uit `content.rendered` uitgevoerd.
+
+## Consumerclient voor de maaltijdplanner
+
+`src/kistje_client.py` is de referentie-implementatie van het consumercontract:
+read-only HTTP GET naar de publieke Pages-URL, meer niet. Geen plugin, geen
+login, geen account, geen state — werkt op elk device gelijk.
+
+```python
+from datetime import date
+from src.kistje_client import get_box_for_plan_start
+
+box = get_box_for_plan_start(date(2026, 8, 31))   # maandag
+
+box.week            # "2026-W35"
+box.vegetables      # 4 producten
+box.fruit           # 4 producten
+box.produce         # alle 8, het volledige 2-persoonskistje
+box.shopping_items()  # kistinhoud + de vaste 6 eieren
+```
+
+Vanaf de commandline:
+
+```bash
+python -m src.kistje_client --plan-start 2026-08-31
+python -m src.kistje_client --week 2026-W35
+```
+
+### Toegangsbeperking
+
+De base URL is configureerbaar, maar wordt gevalideerd voordat er een request
+uitgaat: alleen `https`, alleen host `jortgroen.github.io`, alleen paden onder
+`/weekhap/api/`. Een verkeerd geconfigureerde base URL faalt dus meteen in
+plaats van ergens anders data op te halen.
+
+### Foutgedrag
+
+Bij een mislukte request, ongeldige JSON of een week die niet exact overeenkomt
+geeft de client een expliciete fout — `KistjeUnavailable` of
+`KistjeContractError`. Er wordt **nooit** stilzwijgend teruggevallen op een
+andere week en **nooit** kistinhoud verzonnen.
+
+Retry is beperkt en selectief: tijdelijke problemen (timeout, DNS, 5xx) worden
+maximaal 3× geprobeerd met 1s en 3s backoff. Een **404 wordt niet herhaald** —
+die betekent dat de week niet gepubliceerd is, en dat verandert niet door het
+nog eens te vragen.
+
+## OpenAPI-schema voor een AI-assistent
+
+Draait de maaltijdplanner als custom GPT of AI-assistent met tool-calling, dan
+kan die het schema rechtstreeks importeren:
+
+```
+https://jortgroen.github.io/weekhap/openapi.json
+```
+
+Twee read-only operaties: `getKistjeWeek` (kistinhoud per ISO-week) en
+`getKistjeStatus` (welke weken beschikbaar zijn). Geen authenticatie.
+
+Geef de assistent daarbij deze regels mee:
+
+> Het kistje wordt op donderdag opgehaald. Bepaal de meest recente donderdag op
+> of vóór de planstart, neem het ISO-jaar en ISO-weeknummer van die donderdag, en
+> roep `getKistjeWeek` aan met bijvoorbeeld `2026-W35`. Controleer dat het veld
+> `week` exact overeenkomt met wat je opvroeg. Gebruik alle producten uit
+> `vegetables` en `fruit` — dit is een 2-persoonskistje, dus producten met
+> `excluded_from_one_person_box: true` horen er wél bij. Voeg de 6 eieren uit
+> `planner_additions` toe. Krijg je een 404 of komt de week niet overeen, meld
+> dat dan expliciet; gebruik nooit een andere week en verzin nooit kistinhoud.
+
+## Tests
+
+```bash
+python -m pytest -q -m "not live"      # unit- en fixturetests, geen netwerk
+python -m pytest tests/test_live_e2e.py -v -s   # echte HTTP naar de publieke URL
+```

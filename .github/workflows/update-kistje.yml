@@ -37,7 +37,9 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Unit tests draaien
-        run: python -m pytest -q
+        # Live tests hier uitgesloten: die draaien in verify-published,
+        # na de publicatie, tegen de publieke URL.
+        run: python -m pytest -q -m "not live"
 
       - name: Live fetch, parse en publiceer
         run: python -m src.build --raw-out raw_response.json
@@ -96,3 +98,6 @@ jobs:
         env:
           PAGES_BASE_URL: ${{ vars.PAGES_BASE_URL }}
         run: python -m src.verify_published
+
+      - name: Live E2E van de consumerclient
+        run: python -m pytest tests/test_live_e2e.py -v -s

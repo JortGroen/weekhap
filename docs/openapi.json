@@ -1,0 +1,189 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Kistje Vol Smaak",
+    "description": "Read-only toegang tot de wekelijkse inhoud van het Hoeve Biesland Kistje Vol Smaak. De data wordt automatisch uit de publieke WordPress REST API gehaald en per ISO-week gepubliceerd. Geen authenticatie, geen account, uitsluitend HTTP GET.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://jortgroen.github.io/weekhap",
+      "description": "GitHub Pages publicatie"
+    }
+  ],
+  "paths": {
+    "/api/by-week/{week}.json": {
+      "get": {
+        "operationId": "getKistjeWeek",
+        "summary": "Haal de kistinhoud voor een specifieke ISO-week op",
+        "description": "Geeft groente, fruit en plannerregels voor een week. De week wordt bepaald door de ISO-week van de ophaaldonderdag: het kistje wordt op donderdag opgehaald, dus een planning die op maandag start gebruikt het kistje van de donderdag ervoor. Retourneert 404 als de week niet is gepubliceerd; val in dat geval nooit terug op een andere week.",
+        "parameters": [
+          {
+            "name": "week",
+            "in": "path",
+            "required": true,
+            "description": "ISO-jaar en ISO-weeknummer, bijvoorbeeld 2026-W35. Het weeknummer is altijd tweecijferig.",
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9]{4}-W[0-9]{2}$",
+              "examples": ["2026-W35"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "De kistinhoud voor de gevraagde week",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/WeekBox" }
+              }
+            }
+          },
+          "404": {
+            "description": "Deze week is niet gepubliceerd. Gebruik geen andere week als vervanging."
+          }
+        }
+      }
+    },
+    "/api/status.json": {
+      "get": {
+        "operationId": "getKistjeStatus",
+        "summary": "Welke weken zijn er gepubliceerd en hoe vers is de data",
+        "responses": {
+          "200": {
+            "description": "Status van de publicatie",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Status" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WeekBox": {
+        "type": "object",
+        "required": ["schema_version", "week", "vegetables", "fruit"],
+        "properties": {
+          "schema_version": {
+            "type": "integer",
+            "description": "Contractversie. Verwerk alleen versie 1."
+          },
+          "week": {
+            "type": "string",
+            "description": "ISO-weeksleutel. Moet exact overeenkomen met de gevraagde week; zo niet, weiger de data."
+          },
+          "week_number": { "type": "integer" },
+          "iso_year": { "type": "integer" },
+          "date_range_text": {
+            "type": "string",
+            "description": "De datumrange zoals de bron die noemt, bijvoorbeeld '24 t/m 30 aug'."
+          },
+          "source": { "$ref": "#/components/schemas/Source" },
+          "vegetables": {
+            "type": "array",
+            "description": "Alle groente in het kistje.",
+            "items": { "$ref": "#/components/schemas/Product" }
+          },
+          "fruit": {
+            "type": "array",
+            "description": "Al het fruit in het kistje.",
+            "items": { "$ref": "#/components/schemas/Product" }
+          },
+          "planner_additions": {
+            "type": "array",
+            "description": "Vaste plannerregels die niet uit de bron komen, zoals de 6 eieren die altijd bij het kistje horen.",
+            "items": { "$ref": "#/components/schemas/PlannerAddition" }
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "required": ["name", "category"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "De productnaam, zonder herkomst of certificering."
+          },
+          "category": {
+            "type": "string",
+            "enum": ["vegetable", "fruit"]
+          },
+          "origin": {
+            "type": "string",
+            "description": "Herkomst, bijvoorbeeld 'Familie Hospers uit de Noordoostpolder'."
+          },
+          "certification": {
+            "type": ["string", "null"],
+            "enum": ["biologisch", "biodynamisch", null]
+          },
+          "excluded_from_one_person_box": {
+            "type": "boolean",
+            "description": "De *-markering uit de bron: dit product zit niet in het 1-persoonskistje."
+          },
+          "included_in_two_person_box": {
+            "type": "boolean",
+            "description": "Altijd true. Dit is het veld dat een 2-persoonshuishouden moet gebruiken; *-producten horen er dus wel bij."
+          },
+          "source_line": {
+            "type": "string",
+            "description": "De volledige originele regel uit de bron."
+          }
+        }
+      },
+      "PlannerAddition": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "quantity": { "type": "number" },
+          "unit": { "type": "string" },
+          "origin": {
+            "type": "string",
+            "description": "'planner_rule' als het een vaste regel is en niet uit de bron komt."
+          }
+        }
+      },
+      "Source": {
+        "type": "object",
+        "properties": {
+          "page_id": { "type": "integer" },
+          "url": { "type": "string" },
+          "api_url": { "type": "string" },
+          "modified": {
+            "type": "string",
+            "description": "Wanneer Hoeve Biesland de pagina laatst wijzigde, lokale tijd Europe/Amsterdam."
+          },
+          "modified_gmt": {
+            "type": "string",
+            "description": "Dezelfde wijziging in UTC."
+          },
+          "fetched_at": {
+            "type": "string",
+            "description": "Wanneer deze publicatie de bron ophaalde."
+          }
+        }
+      },
+      "Status": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "string" },
+          "last_success": { "type": "string" },
+          "source_modified": { "type": "string" },
+          "published_weeks": {
+            "type": "array",
+            "description": "Welke weeksleutels op dit moment beschikbaar zijn.",
+            "items": { "type": "string" }
+          },
+          "warnings": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}
