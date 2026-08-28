@@ -105,4 +105,4 @@ jobs:
         run: python -m src.verify_published
 
       - name: Live E2E van de consumerclient
-        run: python -m pytest tests/test_live_e2e.py -v -s
+        run: python -m pytest tests/test_e2e.py -v -s

@@ -229,5 +229,5 @@ Geef de assistent daarbij deze regels mee:
 
 ```bash
 python -m pytest -q -m "not live"      # unit- en fixturetests, geen netwerk
-python -m pytest tests/test_live_e2e.py -v -s   # echte HTTP naar de publieke URL
+python -m pytest tests/test_e2e.py -v -s   # echte HTTP naar de publieke URL
 ```
