@@ -1,42 +1,42 @@
 {
-  "content_hash": "cb8f3d0e0ce6f4d3920599ae9ce6fc56d6afc712d2367de1089d398d5c84be1d",
-  "date_range_text": "31 aug t/m 6 sept",
+  "content_hash": "a81534eb05a68ccd21b4f3ca29a9604d5039954e74d373327fc063fa71312138",
+  "date_range_text": "7 t/m 13 sept",
   "fruit": [
     {
       "category": "fruit",
-      "certification": "biodynamisch",
+      "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "WildWonder tomaatjes",
-      "origin": "Frank de Koning uit Brielle",
-      "source_line": "WildWonder tomaatjes van Frank de Koning uit Brielle (Biodynamisch)"
+      "name": "Delbare appel",
+      "origin": "Lindegaard uit Beusichem",
+      "source_line": "Delbare appel van Lindegaard uit Beusichem (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Mango",
-      "origin": "familie Alhambra uit Spanje",
-      "source_line": "Mango van familie Alhambra uit Spanje (Biologisch)"
+      "name": "Watermeloen",
+      "origin": "familie Sportelli uit Italië",
+      "source_line": "Watermeloen van familie Sportelli uit Italië (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Blauwe bes",
-      "origin": "familie Fernandez uit Spanje",
-      "source_line": "Blauwe bes van familie Fernandez uit Spanje (Biologisch)"
+      "name": "Bananen",
+      "origin": "Ecuador",
+      "source_line": "Bananen uit Ecuador (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": true,
       "included_in_two_person_box": true,
-      "name": "Santana appel",
-      "origin": "Lindegaard uit Beusichem",
-      "source_line": "Santana appel van Lindegaard uit Beusichem (Biologisch) *"
+      "name": "Sinaasappels",
+      "origin": "familie Bekiaris uit Griekenland",
+      "source_line": "Sinaasappels van familie Bekiaris uit Griekenland (Biologisch) *"
     }
   ],
   "iso_year": 2026,
@@ -63,38 +63,38 @@
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Oranje pompoen",
-      "origin": "eigen tuin & van David Luijendijk uit s’ Gravenzande",
-      "source_line": "Oranje pompoen uit eigen tuin & van David Luijendijk uit s’ Gravenzande (Biologisch)"
-    },
-    {
-      "category": "vegetable",
-      "certification": "biodynamisch",
-      "excluded_from_one_person_box": false,
-      "included_in_two_person_box": true,
-      "name": "Puntpaprika",
-      "origin": "Frank de Koning uit Brielle",
-      "source_line": "Puntpaprika van Frank de Koning uit Brielle (Biodynamisch)"
+      "name": "Verse maiskolf",
+      "origin": "zorgboerderij de Zwaluw uit Lage Zwaluwe",
+      "source_line": "Verse maiskolf van zorgboerderij de Zwaluw uit Lage Zwaluwe (Biologisch)"
     },
     {
       "category": "vegetable",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Pastinaak",
-      "origin": "familie Dieleman uit Zeeland",
-      "source_line": "Pastinaak van familie Dieleman uit Zeeland (Biologisch)"
+      "name": "Andijvie",
+      "origin": "Jelle Knoot uit Numandorp",
+      "source_line": "Andijvie van Jelle Knoot uit Numandorp (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Krieltjes",
+      "origin": "Jelle Knoot uit Numandorp",
+      "source_line": "Krieltjes van Jelle Knoot uit Numandorp (Biologisch)"
     },
     {
       "category": "vegetable",
       "certification": "biologisch",
       "excluded_from_one_person_box": true,
       "included_in_two_person_box": true,
-      "name": "Eikenbladsla",
-      "origin": "eigen tuin",
-      "source_line": "Eikenbladsla uit eigen tuin (Biologisch)*"
+      "name": "Rucola",
+      "origin": "tuinderij Natuurluck uit Zevenhuizen",
+      "source_line": "Rucola van tuinderij Natuurluck uit Zevenhuizen (Biologisch) *"
     }
   ],
-  "week": "2026-W36",
-  "week_number": 36
+  "week": "2026-W37",
+  "week_number": 37
 }
