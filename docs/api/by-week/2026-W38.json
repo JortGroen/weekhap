@@ -1,42 +1,42 @@
 {
-  "content_hash": "0ce9223ce7f0e6faca1641bab6bdbf45e5d67b9c2d6560951119b07f4ac1d9ab",
-  "date_range_text": "7 t/m 13 sept",
+  "content_hash": "e903a02d5cf0dbfb634436130780d14f44fb91b87ccadbb2a2a229bec35c6068",
+  "date_range_text": "14 t/m 20 sept",
   "fruit": [
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Delbare appel",
+      "name": "Conference peren",
       "origin": "Lindegaard uit Beusichem",
-      "source_line": "Delbare appel van Lindegaard uit Beusichem (Biologisch)"
+      "source_line": "Conference peren van Lindegaard uit Beusichem (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Watermeloen",
-      "origin": "familie Sportelli uit Italië",
-      "source_line": "Watermeloen van familie Sportelli uit Italië (Biologisch)"
+      "name": "Jubileum pruimen",
+      "origin": "Lindegaard uit Beusichem",
+      "source_line": "Jubileum pruimen van Lindegaard uit Beusichem (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Bananen",
-      "origin": "Ecuador",
-      "source_line": "Bananen uit Ecuador (Biologisch)"
+      "name": "Satsuma mandarijnen",
+      "origin": "( fris & groen) van familie Ché uit Spanje",
+      "source_line": "Satsuma mandarijnen ( fris & groen) van familie Ché uit Spanje (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": true,
       "included_in_two_person_box": true,
-      "name": "Sinaasappels",
-      "origin": "familie Bekiaris uit Griekenland",
-      "source_line": "Sinaasappels van familie Bekiaris uit Griekenland (Biologisch) *"
+      "name": "Bananen",
+      "origin": "de Dominicaanse republiek",
+      "source_line": "Bananen uit de Dominicaanse republiek (Biologisch) *"
     }
   ],
   "iso_year": 2026,
@@ -63,38 +63,38 @@
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Verse maiskolf",
-      "origin": "zorgboerderij de Zwaluw uit Lage Zwaluwe",
-      "source_line": "Verse maiskolf van zorgboerderij de Zwaluw uit Lage Zwaluwe (Biologisch)"
+      "name": "Bosbiet",
+      "origin": "eigen tuin",
+      "source_line": "Bosbiet uit eigen tuin (Biologisch)"
     },
     {
       "category": "vegetable",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Andijvie",
-      "origin": "Jelle Knoot uit Numandorp",
-      "source_line": "Andijvie van Jelle Knoot uit Numandorp (Biologisch)"
+      "name": "Witlof",
+      "origin": "familie Reedijk uit ’s Gravendeel",
+      "source_line": "Witlof van familie Reedijk uit ’s Gravendeel (Biologisch)"
     },
     {
       "category": "vegetable",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Alouette aardappel (vastkokend)",
-      "origin": "Jelle Knoot uit Numandorp",
-      "source_line": "Alouette aardappel (vastkokend) van Jelle Knoot uit Numandorp (Biologisch)"
+      "name": "Chinese kool",
+      "origin": "Jelle Knoot uit Numansdorp",
+      "source_line": "Chinese kool van Jelle Knoot uit Numansdorp (Biologisch)"
     },
     {
       "category": "vegetable",
-      "certification": "biologisch",
+      "certification": "biodynamisch",
       "excluded_from_one_person_box": true,
       "included_in_two_person_box": true,
-      "name": "Rucola",
-      "origin": "tuinderij Natuurluck uit Zevenhuizen",
-      "source_line": "Rucola van tuinderij Natuurluck uit Zevenhuizen (Biologisch) *"
+      "name": "Trostomaat",
+      "origin": "Frank de Koning uit Brielle",
+      "source_line": "Trostomaat van Frank de Koning uit Brielle (Biodynamisch) *"
     }
   ],
-  "week": "2026-W37",
-  "week_number": 37
+  "week": "2026-W38",
+  "week_number": 38
 }
