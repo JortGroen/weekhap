@@ -1,120 +1,20 @@
 {
   "published_weeks": [
-    "2026-W37",
-    "2026-W38"
+    "2026-W38",
+    "2026-W39"
   ],
   "schema_version": 1,
   "source": {
     "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
-    "fetched_at": "2026-09-10T16:24:04Z",
-    "modified": "2026-09-10T16:17:15",
-    "modified_gmt": "2026-09-10T14:17:15",
+    "fetched_at": "2026-09-17T16:59:49Z",
+    "modified": "2026-09-17T13:58:48",
+    "modified_gmt": "2026-09-17T11:58:48",
     "page_id": 19172,
     "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
   },
   "weeks": {
-    "2026-W37": {
-      "content_hash": "0ce9223ce7f0e6faca1641bab6bdbf45e5d67b9c2d6560951119b07f4ac1d9ab",
-      "date_range_text": "7 t/m 13 sept",
-      "fruit": [
-        {
-          "category": "fruit",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Delbare appel",
-          "origin": "Lindegaard uit Beusichem",
-          "source_line": "Delbare appel van Lindegaard uit Beusichem (Biologisch)"
-        },
-        {
-          "category": "fruit",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Watermeloen",
-          "origin": "familie Sportelli uit Italië",
-          "source_line": "Watermeloen van familie Sportelli uit Italië (Biologisch)"
-        },
-        {
-          "category": "fruit",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Bananen",
-          "origin": "Ecuador",
-          "source_line": "Bananen uit Ecuador (Biologisch)"
-        },
-        {
-          "category": "fruit",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": true,
-          "included_in_two_person_box": true,
-          "name": "Sinaasappels",
-          "origin": "familie Bekiaris uit Griekenland",
-          "source_line": "Sinaasappels van familie Bekiaris uit Griekenland (Biologisch) *"
-        }
-      ],
-      "iso_year": 2026,
-      "planner_additions": [
-        {
-          "name": "Eieren",
-          "origin": "planner_rule",
-          "quantity": 6,
-          "unit": "stuks"
-        }
-      ],
-      "schema_version": 1,
-      "source": {
-        "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
-        "fetched_at": "2026-09-10T16:24:04Z",
-        "modified": "2026-09-10T16:17:15",
-        "modified_gmt": "2026-09-10T14:17:15",
-        "page_id": 19172,
-        "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
-      },
-      "vegetables": [
-        {
-          "category": "vegetable",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Verse maiskolf",
-          "origin": "zorgboerderij de Zwaluw uit Lage Zwaluwe",
-          "source_line": "Verse maiskolf van zorgboerderij de Zwaluw uit Lage Zwaluwe (Biologisch)"
-        },
-        {
-          "category": "vegetable",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Andijvie",
-          "origin": "Jelle Knoot uit Numandorp",
-          "source_line": "Andijvie van Jelle Knoot uit Numandorp (Biologisch)"
-        },
-        {
-          "category": "vegetable",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Alouette aardappel (vastkokend)",
-          "origin": "Jelle Knoot uit Numandorp",
-          "source_line": "Alouette aardappel (vastkokend) van Jelle Knoot uit Numandorp (Biologisch)"
-        },
-        {
-          "category": "vegetable",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": true,
-          "included_in_two_person_box": true,
-          "name": "Rucola",
-          "origin": "tuinderij Natuurluck uit Zevenhuizen",
-          "source_line": "Rucola van tuinderij Natuurluck uit Zevenhuizen (Biologisch) *"
-        }
-      ],
-      "week": "2026-W37",
-      "week_number": 37
-    },
     "2026-W38": {
-      "content_hash": "e903a02d5cf0dbfb634436130780d14f44fb91b87ccadbb2a2a229bec35c6068",
+      "content_hash": "8e50b91d32419a9031a86b4e2e92561e7229493b9b99f2119de56d9782b9b61a",
       "date_range_text": "14 t/m 20 sept",
       "fruit": [
         {
@@ -166,9 +66,9 @@
       "schema_version": 1,
       "source": {
         "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
-        "fetched_at": "2026-09-10T16:24:04Z",
-        "modified": "2026-09-10T16:17:15",
-        "modified_gmt": "2026-09-10T14:17:15",
+        "fetched_at": "2026-09-17T16:59:49Z",
+        "modified": "2026-09-17T13:58:48",
+        "modified_gmt": "2026-09-17T11:58:48",
         "page_id": 19172,
         "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
       },
@@ -212,6 +112,106 @@
       ],
       "week": "2026-W38",
       "week_number": 38
+    },
+    "2026-W39": {
+      "content_hash": "692ae14caee17cbb35eeacf80fe444b1cec7a39786dc75a44d8480f1bea6e10f",
+      "date_range_text": "21 t/m 27 sept",
+      "fruit": [
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Santana appel",
+          "origin": "Lindegaard uit Beusichem",
+          "source_line": "Santana appel van Lindegaard uit Beusichem (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Witte druiven",
+          "origin": "Aba Mediterranea uit Italië",
+          "source_line": "Witte druiven van Aba Mediterranea uit Italië (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Bananen",
+          "origin": "de Dominicaanse republiek",
+          "source_line": "Bananen uit de Dominicaanse republiek (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": true,
+          "included_in_two_person_box": true,
+          "name": "Grapefrui",
+          "origin": "t van familie Lopez uit Spanje",
+          "source_line": "Grapefruit van familie Lopez uit Spanje (Biologisch) *"
+        }
+      ],
+      "iso_year": 2026,
+      "planner_additions": [
+        {
+          "name": "Eieren",
+          "origin": "planner_rule",
+          "quantity": 6,
+          "unit": "stuks"
+        }
+      ],
+      "schema_version": 1,
+      "source": {
+        "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
+        "fetched_at": "2026-09-17T16:59:49Z",
+        "modified": "2026-09-17T13:58:48",
+        "modified_gmt": "2026-09-17T11:58:48",
+        "page_id": 19172,
+        "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
+      },
+      "vegetables": [
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Venkel",
+          "origin": "eigen tuin",
+          "source_line": "Venkel uit eigen tuin (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Broccoli",
+          "origin": "familie vd Sluis uit Enkhuizen",
+          "source_line": "Broccoli van familie vd Sluis uit Enkhuizen (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Wortel van",
+          "origin": "tuinderij Fatels uit Flevoland",
+          "source_line": "Wortel van tuinderij Fatels uit Flevoland (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": null,
+          "excluded_from_one_person_box": true,
+          "included_in_two_person_box": true,
+          "name": "Nieuw-Zeelandse spinazie",
+          "origin": "tuinderij Natuurluck uit Zevenhuizen (Biologisch )",
+          "source_line": "Nieuw-Zeelandse spinazie van tuinderij Natuurluck uit Zevenhuizen (Biologisch ) *"
+        }
+      ],
+      "week": "2026-W39",
+      "week_number": 39
     }
   }
 }
