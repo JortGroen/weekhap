@@ -1,120 +1,20 @@
 {
   "published_weeks": [
-    "2026-W38",
-    "2026-W39"
+    "2026-W39",
+    "2026-W40"
   ],
   "schema_version": 1,
   "source": {
     "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
-    "fetched_at": "2026-09-17T16:59:49Z",
-    "modified": "2026-09-17T13:58:48",
-    "modified_gmt": "2026-09-17T11:58:48",
+    "fetched_at": "2026-09-24T17:10:57Z",
+    "modified": "2026-09-24T12:28:46",
+    "modified_gmt": "2026-09-24T10:28:46",
     "page_id": 19172,
     "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
   },
   "weeks": {
-    "2026-W38": {
-      "content_hash": "8e50b91d32419a9031a86b4e2e92561e7229493b9b99f2119de56d9782b9b61a",
-      "date_range_text": "14 t/m 20 sept",
-      "fruit": [
-        {
-          "category": "fruit",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Conference peren",
-          "origin": "Lindegaard uit Beusichem",
-          "source_line": "Conference peren van Lindegaard uit Beusichem (Biologisch)"
-        },
-        {
-          "category": "fruit",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Jubileum pruimen",
-          "origin": "Lindegaard uit Beusichem",
-          "source_line": "Jubileum pruimen van Lindegaard uit Beusichem (Biologisch)"
-        },
-        {
-          "category": "fruit",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Satsuma mandarijnen",
-          "origin": "( fris & groen) van familie Ché uit Spanje",
-          "source_line": "Satsuma mandarijnen ( fris & groen) van familie Ché uit Spanje (Biologisch)"
-        },
-        {
-          "category": "fruit",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": true,
-          "included_in_two_person_box": true,
-          "name": "Bananen",
-          "origin": "de Dominicaanse republiek",
-          "source_line": "Bananen uit de Dominicaanse republiek (Biologisch) *"
-        }
-      ],
-      "iso_year": 2026,
-      "planner_additions": [
-        {
-          "name": "Eieren",
-          "origin": "planner_rule",
-          "quantity": 6,
-          "unit": "stuks"
-        }
-      ],
-      "schema_version": 1,
-      "source": {
-        "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
-        "fetched_at": "2026-09-17T16:59:49Z",
-        "modified": "2026-09-17T13:58:48",
-        "modified_gmt": "2026-09-17T11:58:48",
-        "page_id": 19172,
-        "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
-      },
-      "vegetables": [
-        {
-          "category": "vegetable",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Bosbiet",
-          "origin": "eigen tuin",
-          "source_line": "Bosbiet uit eigen tuin (Biologisch)"
-        },
-        {
-          "category": "vegetable",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Witlof",
-          "origin": "familie Reedijk uit ’s Gravendeel",
-          "source_line": "Witlof van familie Reedijk uit ’s Gravendeel (Biologisch)"
-        },
-        {
-          "category": "vegetable",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Chinese kool",
-          "origin": "Jelle Knoot uit Numansdorp",
-          "source_line": "Chinese kool van Jelle Knoot uit Numansdorp (Biologisch)"
-        },
-        {
-          "category": "vegetable",
-          "certification": "biodynamisch",
-          "excluded_from_one_person_box": true,
-          "included_in_two_person_box": true,
-          "name": "Trostomaat",
-          "origin": "Frank de Koning uit Brielle",
-          "source_line": "Trostomaat van Frank de Koning uit Brielle (Biodynamisch) *"
-        }
-      ],
-      "week": "2026-W38",
-      "week_number": 38
-    },
     "2026-W39": {
-      "content_hash": "692ae14caee17cbb35eeacf80fe444b1cec7a39786dc75a44d8480f1bea6e10f",
+      "content_hash": "b5a7892570ac4d7e85ccd2bf2f1e12c24ab833e956c8d964bbf416323882a028",
       "date_range_text": "21 t/m 27 sept",
       "fruit": [
         {
@@ -166,9 +66,9 @@
       "schema_version": 1,
       "source": {
         "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
-        "fetched_at": "2026-09-17T16:59:49Z",
-        "modified": "2026-09-17T13:58:48",
-        "modified_gmt": "2026-09-17T11:58:48",
+        "fetched_at": "2026-09-24T17:10:57Z",
+        "modified": "2026-09-24T12:28:46",
+        "modified_gmt": "2026-09-24T10:28:46",
         "page_id": 19172,
         "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
       },
@@ -212,6 +112,106 @@
       ],
       "week": "2026-W39",
       "week_number": 39
+    },
+    "2026-W40": {
+      "content_hash": "c9e5a492662f7ce52fa1ab55ff0786ea6988e3f7c12a77c7a04d2a29e0b641fa",
+      "date_range_text": "28 sept t/m 4 okt",
+      "fruit": [
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Kaki",
+          "origin": "familie Dimollo uit Italië",
+          "source_line": "Kaki van familie Dimollo uit Italië (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Kiwi Gold",
+          "origin": "familie Jonica uit Italië",
+          "source_line": "Kiwi Gold van familie Jonica uit Italië (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Sinaasappels",
+          "origin": "familie Sanchez uit Spanje",
+          "source_line": "Sinaasappels van familie Sanchez uit Spanje (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": true,
+          "included_in_two_person_box": true,
+          "name": "Cherry tomaatjes",
+          "origin": "Frank de Koning uit Brielle",
+          "source_line": "Cherry tomaatjes van Frank de Koning uit Brielle (Biologisch) *"
+        }
+      ],
+      "iso_year": 2026,
+      "planner_additions": [
+        {
+          "name": "Eieren",
+          "origin": "planner_rule",
+          "quantity": 6,
+          "unit": "stuks"
+        }
+      ],
+      "schema_version": 1,
+      "source": {
+        "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
+        "fetched_at": "2026-09-24T17:10:57Z",
+        "modified": "2026-09-24T12:28:46",
+        "modified_gmt": "2026-09-24T10:28:46",
+        "page_id": 19172,
+        "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
+      },
+      "vegetables": [
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Paksoi",
+          "origin": "familie Tielen uit Limburg",
+          "source_line": "Paksoi van familie Tielen uit Limburg (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Aubergine",
+          "origin": "familie Noordermeer uit Brielle",
+          "source_line": "Aubergine van familie Noordermeer uit Brielle (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Knolselderij",
+          "origin": "familie Vaalburg uit Noord-Holland",
+          "source_line": "Knolselderij van familie Vaalburg uit Noord-Holland (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biodynamisch",
+          "excluded_from_one_person_box": true,
+          "included_in_two_person_box": true,
+          "name": "Raapstelen",
+          "origin": "David Luijendijk uit Roelofarendsveen",
+          "source_line": "Raapstelen van David Luijendijk uit Roelofarendsveen (Biodynamisch) *"
+        }
+      ],
+      "week": "2026-W40",
+      "week_number": 40
     }
   }
 }

@@ -1,42 +1,42 @@
 {
-  "content_hash": "b5a7892570ac4d7e85ccd2bf2f1e12c24ab833e956c8d964bbf416323882a028",
-  "date_range_text": "21 t/m 27 sept",
+  "content_hash": "c9e5a492662f7ce52fa1ab55ff0786ea6988e3f7c12a77c7a04d2a29e0b641fa",
+  "date_range_text": "28 sept t/m 4 okt",
   "fruit": [
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Santana appel",
-      "origin": "Lindegaard uit Beusichem",
-      "source_line": "Santana appel van Lindegaard uit Beusichem (Biologisch)"
+      "name": "Kaki",
+      "origin": "familie Dimollo uit Italië",
+      "source_line": "Kaki van familie Dimollo uit Italië (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Witte druiven",
-      "origin": "Aba Mediterranea uit Italië",
-      "source_line": "Witte druiven van Aba Mediterranea uit Italië (Biologisch)"
+      "name": "Kiwi Gold",
+      "origin": "familie Jonica uit Italië",
+      "source_line": "Kiwi Gold van familie Jonica uit Italië (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Bananen",
-      "origin": "de Dominicaanse republiek",
-      "source_line": "Bananen uit de Dominicaanse republiek (Biologisch)"
+      "name": "Sinaasappels",
+      "origin": "familie Sanchez uit Spanje",
+      "source_line": "Sinaasappels van familie Sanchez uit Spanje (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": true,
       "included_in_two_person_box": true,
-      "name": "Grapefrui",
-      "origin": "t van familie Lopez uit Spanje",
-      "source_line": "Grapefruit van familie Lopez uit Spanje (Biologisch) *"
+      "name": "Cherry tomaatjes",
+      "origin": "Frank de Koning uit Brielle",
+      "source_line": "Cherry tomaatjes van Frank de Koning uit Brielle (Biologisch) *"
     }
   ],
   "iso_year": 2026,
@@ -63,38 +63,38 @@
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Venkel",
-      "origin": "eigen tuin",
-      "source_line": "Venkel uit eigen tuin (Biologisch)"
+      "name": "Paksoi",
+      "origin": "familie Tielen uit Limburg",
+      "source_line": "Paksoi van familie Tielen uit Limburg (Biologisch)"
     },
     {
       "category": "vegetable",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Broccoli",
-      "origin": "familie vd Sluis uit Enkhuizen",
-      "source_line": "Broccoli van familie vd Sluis uit Enkhuizen (Biologisch)"
+      "name": "Aubergine",
+      "origin": "familie Noordermeer uit Brielle",
+      "source_line": "Aubergine van familie Noordermeer uit Brielle (Biologisch)"
     },
     {
       "category": "vegetable",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Wortel van",
-      "origin": "tuinderij Fatels uit Flevoland",
-      "source_line": "Wortel van tuinderij Fatels uit Flevoland (Biologisch)"
+      "name": "Knolselderij",
+      "origin": "familie Vaalburg uit Noord-Holland",
+      "source_line": "Knolselderij van familie Vaalburg uit Noord-Holland (Biologisch)"
     },
     {
       "category": "vegetable",
-      "certification": null,
+      "certification": "biodynamisch",
       "excluded_from_one_person_box": true,
       "included_in_two_person_box": true,
-      "name": "Nieuw-Zeelandse spinazie",
-      "origin": "tuinderij Natuurluck uit Zevenhuizen (Biologisch )",
-      "source_line": "Nieuw-Zeelandse spinazie van tuinderij Natuurluck uit Zevenhuizen (Biologisch ) *"
+      "name": "Raapstelen",
+      "origin": "David Luijendijk uit Roelofarendsveen",
+      "source_line": "Raapstelen van David Luijendijk uit Roelofarendsveen (Biodynamisch) *"
     }
   ],
-  "week": "2026-W39",
-  "week_number": 39
+  "week": "2026-W40",
+  "week_number": 40
 }
