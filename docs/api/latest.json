@@ -1,120 +1,20 @@
 {
   "published_weeks": [
-    "2026-W39",
-    "2026-W40"
+    "2026-W40",
+    "2026-W41"
   ],
   "schema_version": 1,
   "source": {
     "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
-    "fetched_at": "2026-09-24T17:10:57Z",
-    "modified": "2026-09-24T12:28:46",
-    "modified_gmt": "2026-09-24T10:28:46",
+    "fetched_at": "2026-10-03T16:17:31Z",
+    "modified": "2026-10-03T15:01:25",
+    "modified_gmt": "2026-10-03T13:01:25",
     "page_id": 19172,
     "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
   },
   "weeks": {
-    "2026-W39": {
-      "content_hash": "b5a7892570ac4d7e85ccd2bf2f1e12c24ab833e956c8d964bbf416323882a028",
-      "date_range_text": "21 t/m 27 sept",
-      "fruit": [
-        {
-          "category": "fruit",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Santana appel",
-          "origin": "Lindegaard uit Beusichem",
-          "source_line": "Santana appel van Lindegaard uit Beusichem (Biologisch)"
-        },
-        {
-          "category": "fruit",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Witte druiven",
-          "origin": "Aba Mediterranea uit Italië",
-          "source_line": "Witte druiven van Aba Mediterranea uit Italië (Biologisch)"
-        },
-        {
-          "category": "fruit",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Bananen",
-          "origin": "de Dominicaanse republiek",
-          "source_line": "Bananen uit de Dominicaanse republiek (Biologisch)"
-        },
-        {
-          "category": "fruit",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": true,
-          "included_in_two_person_box": true,
-          "name": "Grapefrui",
-          "origin": "t van familie Lopez uit Spanje",
-          "source_line": "Grapefruit van familie Lopez uit Spanje (Biologisch) *"
-        }
-      ],
-      "iso_year": 2026,
-      "planner_additions": [
-        {
-          "name": "Eieren",
-          "origin": "planner_rule",
-          "quantity": 6,
-          "unit": "stuks"
-        }
-      ],
-      "schema_version": 1,
-      "source": {
-        "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
-        "fetched_at": "2026-09-24T17:10:57Z",
-        "modified": "2026-09-24T12:28:46",
-        "modified_gmt": "2026-09-24T10:28:46",
-        "page_id": 19172,
-        "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
-      },
-      "vegetables": [
-        {
-          "category": "vegetable",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Venkel",
-          "origin": "eigen tuin",
-          "source_line": "Venkel uit eigen tuin (Biologisch)"
-        },
-        {
-          "category": "vegetable",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Broccoli",
-          "origin": "familie vd Sluis uit Enkhuizen",
-          "source_line": "Broccoli van familie vd Sluis uit Enkhuizen (Biologisch)"
-        },
-        {
-          "category": "vegetable",
-          "certification": "biologisch",
-          "excluded_from_one_person_box": false,
-          "included_in_two_person_box": true,
-          "name": "Wortel van",
-          "origin": "tuinderij Fatels uit Flevoland",
-          "source_line": "Wortel van tuinderij Fatels uit Flevoland (Biologisch)"
-        },
-        {
-          "category": "vegetable",
-          "certification": null,
-          "excluded_from_one_person_box": true,
-          "included_in_two_person_box": true,
-          "name": "Nieuw-Zeelandse spinazie",
-          "origin": "tuinderij Natuurluck uit Zevenhuizen (Biologisch )",
-          "source_line": "Nieuw-Zeelandse spinazie van tuinderij Natuurluck uit Zevenhuizen (Biologisch ) *"
-        }
-      ],
-      "week": "2026-W39",
-      "week_number": 39
-    },
     "2026-W40": {
-      "content_hash": "c9e5a492662f7ce52fa1ab55ff0786ea6988e3f7c12a77c7a04d2a29e0b641fa",
+      "content_hash": "4591a1256550736a92ceb870557ca694351b5d28ae762fffea69c6beb84f21a6",
       "date_range_text": "28 sept t/m 4 okt",
       "fruit": [
         {
@@ -166,9 +66,9 @@
       "schema_version": 1,
       "source": {
         "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
-        "fetched_at": "2026-09-24T17:10:57Z",
-        "modified": "2026-09-24T12:28:46",
-        "modified_gmt": "2026-09-24T10:28:46",
+        "fetched_at": "2026-10-03T16:17:31Z",
+        "modified": "2026-10-03T15:01:25",
+        "modified_gmt": "2026-10-03T13:01:25",
         "page_id": 19172,
         "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
       },
@@ -212,6 +112,106 @@
       ],
       "week": "2026-W40",
       "week_number": 40
+    },
+    "2026-W41": {
+      "content_hash": "845d98f71c0d30dd3994e3a45068b0b38969a92f58bf15efa6f73f9503a3842e",
+      "date_range_text": "5 t/m 11 okt",
+      "fruit": [
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Avocado",
+          "origin": "familie Novo uit Spanje",
+          "source_line": "Avocado van familie Novo uit Spanje (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Satsuma mandarijnen",
+          "origin": "familie Santori uit Italië",
+          "source_line": "Satsuma mandarijnen van familie Santori uit Italië (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Bananen",
+          "origin": "de Dominicaanse Republiek",
+          "source_line": "Bananen uit de Dominicaanse Republiek (Biologisch)"
+        },
+        {
+          "category": "fruit",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": true,
+          "included_in_two_person_box": true,
+          "name": "Elstar appel",
+          "origin": "Lindegaard uit Beusichem",
+          "source_line": "Elstar appel van Lindegaard uit Beusichem (Biologisch) *"
+        }
+      ],
+      "iso_year": 2026,
+      "planner_additions": [
+        {
+          "name": "Eieren",
+          "origin": "planner_rule",
+          "quantity": 6,
+          "unit": "stuks"
+        }
+      ],
+      "schema_version": 1,
+      "source": {
+        "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
+        "fetched_at": "2026-10-03T16:17:31Z",
+        "modified": "2026-10-03T15:01:25",
+        "modified_gmt": "2026-10-03T13:01:25",
+        "page_id": 19172,
+        "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
+      },
+      "vegetables": [
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Spaghettipompoen",
+          "origin": "eigen tuin en David Luijendijk uit Roelofarendsveen",
+          "source_line": "Spaghettipompoen uit eigen tuin en David Luijendijk uit Roelofarendsveen (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Prei",
+          "origin": "eigen tuin",
+          "source_line": "Prei uit eigen tuin (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biologisch",
+          "excluded_from_one_person_box": false,
+          "included_in_two_person_box": true,
+          "name": "Courgette van familie Rozendaal uit Strijen",
+          "origin": "",
+          "source_line": "Courgette van familie Rozendaal uit Strijen (Biologisch)"
+        },
+        {
+          "category": "vegetable",
+          "certification": "biodynamisch",
+          "excluded_from_one_person_box": true,
+          "included_in_two_person_box": true,
+          "name": "Rode paprika",
+          "origin": "Frank de Koning uit Brielle",
+          "source_line": "Rode paprika van Frank de Koning uit Brielle (Biodynamisch) *"
+        }
+      ],
+      "week": "2026-W41",
+      "week_number": 41
     }
   }
 }

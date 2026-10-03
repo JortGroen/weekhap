@@ -1,42 +1,42 @@
 {
-  "content_hash": "4591a1256550736a92ceb870557ca694351b5d28ae762fffea69c6beb84f21a6",
-  "date_range_text": "28 sept t/m 4 okt",
+  "content_hash": "845d98f71c0d30dd3994e3a45068b0b38969a92f58bf15efa6f73f9503a3842e",
+  "date_range_text": "5 t/m 11 okt",
   "fruit": [
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Kaki",
-      "origin": "familie Dimollo uit Italië",
-      "source_line": "Kaki van familie Dimollo uit Italië (Biologisch)"
+      "name": "Avocado",
+      "origin": "familie Novo uit Spanje",
+      "source_line": "Avocado van familie Novo uit Spanje (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Kiwi Gold",
-      "origin": "familie Jonica uit Italië",
-      "source_line": "Kiwi Gold van familie Jonica uit Italië (Biologisch)"
+      "name": "Satsuma mandarijnen",
+      "origin": "familie Santori uit Italië",
+      "source_line": "Satsuma mandarijnen van familie Santori uit Italië (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Sinaasappels",
-      "origin": "familie Sanchez uit Spanje",
-      "source_line": "Sinaasappels van familie Sanchez uit Spanje (Biologisch)"
+      "name": "Bananen",
+      "origin": "de Dominicaanse Republiek",
+      "source_line": "Bananen uit de Dominicaanse Republiek (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": true,
       "included_in_two_person_box": true,
-      "name": "Cherry tomaatjes",
-      "origin": "Frank de Koning uit Brielle",
-      "source_line": "Cherry tomaatjes van Frank de Koning uit Brielle (Biologisch) *"
+      "name": "Elstar appel",
+      "origin": "Lindegaard uit Beusichem",
+      "source_line": "Elstar appel van Lindegaard uit Beusichem (Biologisch) *"
     }
   ],
   "iso_year": 2026,
@@ -63,38 +63,38 @@
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Paksoi",
-      "origin": "familie Tielen uit Limburg",
-      "source_line": "Paksoi van familie Tielen uit Limburg (Biologisch)"
+      "name": "Spaghettipompoen",
+      "origin": "eigen tuin en David Luijendijk uit Roelofarendsveen",
+      "source_line": "Spaghettipompoen uit eigen tuin en David Luijendijk uit Roelofarendsveen (Biologisch)"
     },
     {
       "category": "vegetable",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Aubergine",
-      "origin": "familie Noordermeer uit Brielle",
-      "source_line": "Aubergine van familie Noordermeer uit Brielle (Biologisch)"
+      "name": "Prei",
+      "origin": "eigen tuin",
+      "source_line": "Prei uit eigen tuin (Biologisch)"
     },
     {
       "category": "vegetable",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Knolselderij",
-      "origin": "familie Vaalburg uit Noord-Holland",
-      "source_line": "Knolselderij van familie Vaalburg uit Noord-Holland (Biologisch)"
+      "name": "Courgette van familie Rozendaal uit Strijen",
+      "origin": "",
+      "source_line": "Courgette van familie Rozendaal uit Strijen (Biologisch)"
     },
     {
       "category": "vegetable",
       "certification": "biodynamisch",
       "excluded_from_one_person_box": true,
       "included_in_two_person_box": true,
-      "name": "Raapstelen",
-      "origin": "David Luijendijk uit Roelofarendsveen",
-      "source_line": "Raapstelen van David Luijendijk uit Roelofarendsveen (Biodynamisch) *"
+      "name": "Rode paprika",
+      "origin": "Frank de Koning uit Brielle",
+      "source_line": "Rode paprika van Frank de Koning uit Brielle (Biodynamisch) *"
     }
   ],
-  "week": "2026-W40",
-  "week_number": 40
+  "week": "2026-W41",
+  "week_number": 41
 }
