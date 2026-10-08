@@ -1,42 +1,42 @@
 {
-  "content_hash": "9f93efab109ed32dcc1442142ab10532286dbaba019fd95d1f347ddf3e5e185e",
-  "date_range_text": "5 t/m 11 okt",
+  "content_hash": "d2229785cbdd1ea88615aaecac4c69a8722ab1606d1cdf18f8be09eb070bc2e8",
+  "date_range_text": "12 t/m 18 okt",
   "fruit": [
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Avocado",
+      "name": "Mango",
       "origin": "familie Novo uit Spanje",
-      "source_line": "Avocado van familie Novo uit Spanje (Biologisch)"
+      "source_line": "Mango van familie Novo uit Spanje (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Satsuma mandarijnen",
-      "origin": "familie Santori uit Italië",
-      "source_line": "Satsuma mandarijnen van familie Santori uit Italië (Biologisch)"
+      "name": "Pruimen",
+      "origin": "familie Marinez uit Italië",
+      "source_line": "Pruimen van familie Marinez uit Italië (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Bananen",
-      "origin": "de Dominicaanse Republiek",
-      "source_line": "Bananen uit de Dominicaanse Republiek (Biologisch)"
+      "name": "Conference peren",
+      "origin": "Lindegaard uit Beusichem",
+      "source_line": "Conference peren van Lindegaard uit Beusichem (Biologisch)"
     },
     {
       "category": "fruit",
       "certification": "biologisch",
       "excluded_from_one_person_box": true,
       "included_in_two_person_box": true,
-      "name": "Elstar appel",
-      "origin": "Lindegaard uit Beusichem",
-      "source_line": "Elstar appel van Lindegaard uit Beusichem (Biologisch) *"
+      "name": "(Pers)sinaasappel",
+      "origin": "Sanchis uit Spanje",
+      "source_line": "(Pers)sinaasappel van Sanchis uit Spanje (Biologisch) *"
     }
   ],
   "iso_year": 2026,
@@ -63,38 +63,38 @@
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Spaghettipompoen",
-      "origin": "eigen tuin en David Luijendijk uit Roelofarendsveen",
-      "source_line": "Spaghettipompoen uit eigen tuin en David Luijendijk uit Roelofarendsveen (Biologisch)"
+      "name": "Spitskool",
+      "origin": "Jelle Knoot uit Numansdorp",
+      "source_line": "Spitskool van Jelle Knoot uit Numansdorp (Biologisch)"
     },
     {
       "category": "vegetable",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Prei",
+      "name": "Snijbiet",
       "origin": "eigen tuin",
-      "source_line": "Prei uit eigen tuin (Biologisch)"
+      "source_line": "Snijbiet uit eigen tuin (Biologisch)"
     },
     {
       "category": "vegetable",
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Courgette van familie Rozendaal uit Strijen",
-      "origin": "",
-      "source_line": "Courgette van familie Rozendaal uit Strijen (Biologisch)"
+      "name": "Groenselderij",
+      "origin": "tuinderij Natuurluck uit Zevenhuizen",
+      "source_line": "Groenselderij van tuinderij Natuurluck uit Zevenhuizen (Biologisch)"
     },
     {
       "category": "vegetable",
-      "certification": "biodynamisch",
+      "certification": "biologisch",
       "excluded_from_one_person_box": true,
       "included_in_two_person_box": true,
-      "name": "Rode paprika",
-      "origin": "Frank de Koning uit Brielle",
-      "source_line": "Rode paprika van Frank de Koning uit Brielle (Biodynamisch) *"
+      "name": "Meiraapjes",
+      "origin": "Jelle Knoot uit Numansdorp",
+      "source_line": "Meiraapjes van Jelle Knoot uit Numansdorp (Biologisch) *"
     }
   ],
-  "week": "2026-W41",
-  "week_number": 41
+  "week": "2026-W42",
+  "week_number": 42
 }
