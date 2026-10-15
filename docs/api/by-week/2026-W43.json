@@ -1,0 +1,100 @@
+{
+  "content_hash": "aad5e8f3f6d7521b33ce84b549170a4910321038818acf3e6c407d62e70abda8",
+  "date_range_text": "19 t/m 25 okt",
+  "fruit": [
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Topaz appel",
+      "origin": "Lindegaard uit Beusichem",
+      "source_line": "Topaz appel van Lindegaard uit Beusichem (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Kaki",
+      "origin": "familie Damillio uit Italië",
+      "source_line": "Kaki van familie Damillio uit Italië (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Rode druiven",
+      "origin": "familie Santorro uit Italië",
+      "source_line": "Rode druiven van familie Santorro uit Italië (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": true,
+      "included_in_two_person_box": true,
+      "name": "Bananen",
+      "origin": "de Dominicaanse Republiek",
+      "source_line": "Bananen uit de Dominicaanse Republiek (Biologisch) *"
+    }
+  ],
+  "iso_year": 2026,
+  "planner_additions": [
+    {
+      "name": "Eieren",
+      "origin": "planner_rule",
+      "quantity": 6,
+      "unit": "stuks"
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
+    "fetched_at": "2026-10-15T17:00:20Z",
+    "modified": "2026-10-15T16:33:11",
+    "modified_gmt": "2026-10-15T14:33:11",
+    "page_id": 19172,
+    "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
+  },
+  "vegetables": [
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Spruitjes",
+      "origin": "familie Bos uit Dronten",
+      "source_line": "Spruitjes van familie Bos uit Dronten (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Broccoli",
+      "origin": "familie Tielen uit Limburg",
+      "source_line": "Broccoli van familie Tielen uit Limburg (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Pastinaak v",
+      "origin": "an familie Dielenman uit Middelburg",
+      "source_line": "Pastinaak van familie Dielenman uit Middelburg (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": true,
+      "included_in_two_person_box": true,
+      "name": "Soeptomaat",
+      "origin": "Frank de Koning uit Brielle",
+      "source_line": "Soeptomaat van Frank de Koning uit Brielle (Biologisch) *"
+    }
+  ],
+  "week": "2026-W43",
+  "week_number": 43
+}

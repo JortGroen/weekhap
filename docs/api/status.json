@@ -1,5 +1,5 @@
 {
-  "last_success": "2026-10-08T18:51:20Z",
+  "last_success": "2026-10-15T17:00:20Z",
   "observed_modified_history": [
     "2026-08-27T10:20:54",
     "2026-09-03T12:58:09",
@@ -8,19 +8,20 @@
     "2026-09-17T11:58:48",
     "2026-09-24T10:28:46",
     "2026-10-03T13:01:25",
-    "2026-10-08T14:47:23"
+    "2026-10-08T14:47:23",
+    "2026-10-15T14:33:11"
   ],
-  "publication_hash": "fa442f483fbcdd01e17b632df37954be39391d095e6d78b9010fe90b0573cf67",
+  "publication_hash": "a98bdcfe899438b6e91e7b6695552100916fc7e38c6e0f8f01b2bb54619ff6fc",
   "published_weeks": [
-    "2026-W41",
-    "2026-W42"
+    "2026-W42",
+    "2026-W43"
   ],
-  "source_modified": "2026-10-08T16:47:23",
-  "source_modified_gmt": "2026-10-08T14:47:23",
+  "source_modified": "2026-10-15T16:33:11",
+  "source_modified_gmt": "2026-10-15T14:33:11",
   "status": "ok",
   "warnings": [],
   "week_hashes": {
-    "2026-W41": "9f93efab109ed32dcc1442142ab10532286dbaba019fd95d1f347ddf3e5e185e",
-    "2026-W42": "d2229785cbdd1ea88615aaecac4c69a8722ab1606d1cdf18f8be09eb070bc2e8"
+    "2026-W42": "afe1d47f88fed553777f241d3118a6c404c744f472f553a9d4c6d43bff64e8b0",
+    "2026-W43": "aad5e8f3f6d7521b33ce84b549170a4910321038818acf3e6c407d62e70abda8"
   }
 }
