@@ -1,5 +1,5 @@
 {
-  "content_hash": "afe1d47f88fed553777f241d3118a6c404c744f472f553a9d4c6d43bff64e8b0",
+  "content_hash": "b1186f9d234c47c88105447d3e8a114329638019f025b555665944d116a0472e",
   "date_range_text": "12 t/m 18 okt",
   "fruit": [
     {
@@ -51,9 +51,9 @@
   "schema_version": 1,
   "source": {
     "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
-    "fetched_at": "2026-10-15T17:00:20Z",
-    "modified": "2026-10-15T16:33:11",
-    "modified_gmt": "2026-10-15T14:33:11",
+    "fetched_at": "2026-10-19T18:42:52Z",
+    "modified": "2026-10-19T08:24:59",
+    "modified_gmt": "2026-10-19T06:24:59",
     "page_id": 19172,
     "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
   },

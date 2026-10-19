@@ -1,5 +1,5 @@
 {
-  "content_hash": "aad5e8f3f6d7521b33ce84b549170a4910321038818acf3e6c407d62e70abda8",
+  "content_hash": "37cab4caba3b1641b87929841872063d6848d1f684cf7a7446165d4028496608",
   "date_range_text": "19 t/m 25 okt",
   "fruit": [
     {
@@ -25,18 +25,18 @@
       "certification": "biologisch",
       "excluded_from_one_person_box": false,
       "included_in_two_person_box": true,
-      "name": "Rode druiven",
-      "origin": "familie Santorro uit Italië",
-      "source_line": "Rode druiven van familie Santorro uit Italië (Biologisch)"
+      "name": "Bananen",
+      "origin": "de Dominicaanse Republiek",
+      "source_line": "Bananen uit de Dominicaanse Republiek (Biologisch)"
     },
     {
       "category": "fruit",
-      "certification": "biologisch",
+      "certification": null,
       "excluded_from_one_person_box": true,
       "included_in_two_person_box": true,
-      "name": "Bananen",
-      "origin": "de Dominicaanse Republiek",
-      "source_line": "Bananen uit de Dominicaanse Republiek (Biologisch) *"
+      "name": "Granaatappel",
+      "origin": "familie Bitella uit Italië",
+      "source_line": "Granaatappel van familie Bitella uit Italië *"
     }
   ],
   "iso_year": 2026,
@@ -51,9 +51,9 @@
   "schema_version": 1,
   "source": {
     "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
-    "fetched_at": "2026-10-15T17:00:20Z",
-    "modified": "2026-10-15T16:33:11",
-    "modified_gmt": "2026-10-15T14:33:11",
+    "fetched_at": "2026-10-19T18:42:52Z",
+    "modified": "2026-10-19T08:24:59",
+    "modified_gmt": "2026-10-19T06:24:59",
     "page_id": 19172,
     "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
   },
@@ -90,9 +90,9 @@
       "certification": "biologisch",
       "excluded_from_one_person_box": true,
       "included_in_two_person_box": true,
-      "name": "Soeptomaat",
+      "name": "Soeptomaten",
       "origin": "Frank de Koning uit Brielle",
-      "source_line": "Soeptomaat van Frank de Koning uit Brielle (Biologisch) *"
+      "source_line": "Soeptomaten van Frank de Koning uit Brielle (Biologisch) *"
     }
   ],
   "week": "2026-W43",
