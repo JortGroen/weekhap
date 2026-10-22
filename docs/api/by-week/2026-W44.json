@@ -1,0 +1,100 @@
+{
+  "content_hash": "308b633bb4a932830af650d46a3b72b6cab7b45a16995b6a8219f8ba6fee03df",
+  "date_range_text": "26 okt t/m 1 nov",
+  "fruit": [
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Red love appel",
+      "origin": "Lindegaard uit Beusichem",
+      "source_line": "Red love appel van Lindegaard uit Beusichem (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Kiwi",
+      "origin": "familie Kip uit Griekenland",
+      "source_line": "Kiwi van familie Kip uit Griekenland (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Cherimmoya",
+      "origin": "familie Bustos uit Spanje",
+      "source_line": "Cherimmoya van familie Bustos uit Spanje (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": true,
+      "included_in_two_person_box": true,
+      "name": "Mandarijnen",
+      "origin": "familie Mallagrino uit Italië",
+      "source_line": "Mandarijnen van familie Mallagrino uit Italië (Biologisch) *"
+    }
+  ],
+  "iso_year": 2026,
+  "planner_additions": [
+    {
+      "name": "Eieren",
+      "origin": "planner_rule",
+      "quantity": 6,
+      "unit": "stuks"
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
+    "fetched_at": "2026-10-22T17:10:23Z",
+    "modified": "2026-10-22T14:02:24",
+    "modified_gmt": "2026-10-22T12:02:24",
+    "page_id": 19172,
+    "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
+  },
+  "vegetables": [
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Nameco paddenstoelen",
+      "origin": "Paddenstoelenrijk uit Rossum",
+      "source_line": "Nameco paddenstoelen van Paddenstoelenrijk uit Rossum (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Winterpostelein",
+      "origin": "eigen tuin en tuinderij Natuurluck uit Zevenhuizen",
+      "source_line": "Winterpostelein uit eigen tuin en tuinderij Natuurluck uit Zevenhuizen (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Savooie kool",
+      "origin": "tuinderij Hospers uit Markesse",
+      "source_line": "Savooie kool van tuinderij Hospers uit Markesse (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": true,
+      "included_in_two_person_box": true,
+      "name": "Paksoi",
+      "origin": "eigen tuin",
+      "source_line": "Paksoi uit eigen tuin (Biologisch) *"
+    }
+  ],
+  "week": "2026-W44",
+  "week_number": 44
+}
