@@ -1,0 +1,100 @@
+{
+  "content_hash": "6a8d5c48b7ee59bb63940c3a7df0b6d15f35ba13de201cd9aa625a2e5c44dde0",
+  "date_range_text": "2 t/m 8 nov",
+  "fruit": [
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Rode druiven",
+      "origin": "familie Menichelli uit Zuid Italië",
+      "source_line": "Rode druiven van familie Menichelli uit Zuid Italië (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Avocado",
+      "origin": "familie Bustos uit Spanje",
+      "source_line": "Avocado van familie Bustos uit Spanje (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Sinaasappels",
+      "origin": "familie Lopez uit Spanje",
+      "source_line": "Sinaasappels van familie Lopez uit Spanje (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": true,
+      "included_in_two_person_box": true,
+      "name": "Conferene peren",
+      "origin": "Lindegaard uit Beusichem",
+      "source_line": "Conferene peren van Lindegaard uit Beusichem (Biologisch) *"
+    }
+  ],
+  "iso_year": 2026,
+  "planner_additions": [
+    {
+      "name": "Eieren",
+      "origin": "planner_rule",
+      "quantity": 6,
+      "unit": "stuks"
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
+    "fetched_at": "2026-11-02T21:42:12Z",
+    "modified": "2026-11-02T07:14:10",
+    "modified_gmt": "2026-11-02T06:14:10",
+    "page_id": 19172,
+    "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
+  },
+  "vegetables": [
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Fles pompoen",
+      "origin": "eigen tuin en familie Tielen uit Noord Limburg",
+      "source_line": "Fles pompoen uit eigen tuin en familie Tielen uit Noord Limburg (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Palmkool",
+      "origin": "Jelle Knoot uit Numansdorp",
+      "source_line": "Palmkool van Jelle Knoot uit Numansdorp (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Aubergine",
+      "origin": "familie Noordermeer uit Brielle",
+      "source_line": "Aubergine van familie Noordermeer uit Brielle (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": true,
+      "included_in_two_person_box": true,
+      "name": "Rode bieten",
+      "origin": "Peter vd Erve uit Goudswaard",
+      "source_line": "Rode bieten van Peter vd Erve uit Goudswaard (Biologisch) *"
+    }
+  ],
+  "week": "2026-W45",
+  "week_number": 45
+}
