@@ -1,0 +1,100 @@
+{
+  "content_hash": "e75d17f154da8c95486a5fd6228f707d99dd4343986900ff5fb567a0dc5b9812",
+  "date_range_text": "9 t/m 15 nov",
+  "fruit": [
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Golden delicious appel",
+      "origin": "Lindegaard uit Beusichem",
+      "source_line": "Golden delicious appel van Lindegaard uit Beusichem (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Mandarijnen",
+      "origin": "teler Faam uit Italië",
+      "source_line": "Mandarijnen van teler Faam uit Italië (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Bananen",
+      "origin": "de Dominicaanse Republiek",
+      "source_line": "Bananen uit de Dominicaanse Republiek (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": true,
+      "included_in_two_person_box": true,
+      "name": "Kaki",
+      "origin": "teler Jonica uit Italië",
+      "source_line": "Kaki van teler Jonica uit Italië (Biologisch) *"
+    }
+  ],
+  "iso_year": 2026,
+  "planner_additions": [
+    {
+      "name": "Eieren",
+      "origin": "planner_rule",
+      "quantity": 6,
+      "unit": "stuks"
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
+    "fetched_at": "2026-11-05T19:57:09Z",
+    "modified": "2026-11-05T15:12:20",
+    "modified_gmt": "2026-11-05T14:12:20",
+    "page_id": 19172,
+    "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
+  },
+  "vegetables": [
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Bloemkool",
+      "origin": "familie Bliekendaal uit Zeewolde",
+      "source_line": "Bloemkool van familie Bliekendaal uit Zeewolde (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Groenselderij",
+      "origin": "familie Bliekendaal uit Zeewolde",
+      "source_line": "Groenselderij van familie Bliekendaal uit Zeewolde (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Gele paprika",
+      "origin": "(klasse 2) van Frank de Koning uit Brielle",
+      "source_line": "Gele paprika (klasse 2) van Frank de Koning uit Brielle (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": true,
+      "included_in_two_person_box": true,
+      "name": "Zoete aardappel",
+      "origin": "de Waog uit Neer",
+      "source_line": "Zoete aardappel van de Waog uit Neer (Biologisch) *"
+    }
+  ],
+  "week": "2026-W46",
+  "week_number": 46
+}
