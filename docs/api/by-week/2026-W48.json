@@ -1,0 +1,100 @@
+{
+  "content_hash": "34a2839a73d65d4c53f5d5a440d6edaaddbc6775a36a2930013acdb7604c1c70",
+  "date_range_text": "23 t/m 29 nov",
+  "fruit": [
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Fuji appel (in omschakeling)",
+      "origin": "Merkens uit Tricht",
+      "source_line": "Fuji appel (in omschakeling) van Merkens uit Tricht (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Sinaasappel",
+      "origin": "Spanje",
+      "source_line": "Sinaasappel uit Spanje (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Avocado",
+      "origin": "Spanje",
+      "source_line": "Avocado uit Spanje (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": true,
+      "included_in_two_person_box": true,
+      "name": "Granaatappel",
+      "origin": "Italië",
+      "source_line": "Granaatappel uit Italië (Biologisch)*"
+    }
+  ],
+  "iso_year": 2026,
+  "planner_additions": [
+    {
+      "name": "Eieren",
+      "origin": "planner_rule",
+      "quantity": 6,
+      "unit": "stuks"
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
+    "fetched_at": "2026-11-19T20:36:25Z",
+    "modified": "2026-11-19T15:43:08",
+    "modified_gmt": "2026-11-19T14:43:08",
+    "page_id": 19172,
+    "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
+  },
+  "vegetables": [
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Witlof",
+      "origin": "familie Reedijk uit ’s Gravendeel",
+      "source_line": "Witlof van familie Reedijk uit ’s Gravendeel (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Pompoen",
+      "origin": "Peter vd Erve uit Goudswaard",
+      "source_line": "Pompoen van Peter vd Erve uit Goudswaard (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Pastinaak",
+      "origin": "familie Dieleman uit Zeeland",
+      "source_line": "Pastinaak van familie Dieleman uit Zeeland (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": true,
+      "included_in_two_person_box": true,
+      "name": "Zuurkool",
+      "origin": "familie Kramer uit Zuid-Scharwoude",
+      "source_line": "Zuurkool van familie Kramer uit Zuid-Scharwoude (Biologisch) *"
+    }
+  ],
+  "week": "2026-W48",
+  "week_number": 48
+}
