@@ -114,6 +114,18 @@ def test_live_volledige_flow_vanaf_planstart_zonder_tussenkomst():
 
 
 def test_live_ontbrekende_week_geeft_expliciete_fout():
-    """Een niet-gepubliceerde week mag nooit stilzwijgend iets anders opleveren."""
-    with pytest.raises(KistjeUnavailable, match="404"):
-        fetch_week("1999-W01", backoffs=(), sleep=lambda _: None)
+    """Een niet-gepubliceerde week mag nooit stilzwijgend iets anders opleveren.
+
+    GitHub Pages geeft voor een ontbrekend bestand af en toe kortstondig een
+    HTTP 503 in plaats van 404. De client probeert dat (als tijdelijke fout)
+    opnieuw; een 404 stopt meteen. Blijft Pages 5xx geven, dan is de bron
+    onbereikbaar en slaan we over, net als de live_box-fixture.
+    """
+    with pytest.raises(KistjeUnavailable) as excinfo:
+        fetch_week("1999-W01", backoffs=(2, 5, 10))
+
+    message = str(excinfo.value)
+    if "404" not in message:
+        if "HTTP 5" in message or "Netwerkfout" in message:
+            pytest.skip("Publieke bron niet bereikbaar: %s" % message)
+        pytest.fail("Verwachtte een expliciete 404-fout, kreeg: %s" % message)
