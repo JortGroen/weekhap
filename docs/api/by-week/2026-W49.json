@@ -1,0 +1,100 @@
+{
+  "content_hash": "b4b743d29425fdffd57c0819ad1bdb161f09668ff85962aa2d0ebd38d3ffa661",
+  "date_range_text": "30 nov t/m 6 dec",
+  "fruit": [
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Conference peren",
+      "origin": "Lindegaard uit Beusichem",
+      "source_line": "Conference peren van Lindegaard uit Beusichem (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Kaki",
+      "origin": "Spanje",
+      "source_line": "Kaki uit Spanje (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Bananen",
+      "origin": "de Dominicaanse Republiek",
+      "source_line": "Bananen uit de Dominicaanse Republiek (Biologisch)"
+    },
+    {
+      "category": "fruit",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": true,
+      "included_in_two_person_box": true,
+      "name": "Mandarijnen",
+      "origin": "Spanje",
+      "source_line": "Mandarijnen uit Spanje (Biologisch)*"
+    }
+  ],
+  "iso_year": 2026,
+  "planner_additions": [
+    {
+      "name": "Eieren",
+      "origin": "planner_rule",
+      "quantity": 6,
+      "unit": "stuks"
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "api_url": "https://hoevebiesland.nl/wp-json/wp/v2/pages/19172",
+    "fetched_at": "2026-11-26T21:30:38Z",
+    "modified": "2026-11-26T16:25:12",
+    "modified_gmt": "2026-11-26T15:25:12",
+    "page_id": 19172,
+    "url": "https://hoevebiesland.nl/kistjevolsmaak/deze-week-in-je-kistje/"
+  },
+  "vegetables": [
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Spruitjes",
+      "origin": "zorgboerderij De Zwaluw uit Lage Zwaluwe",
+      "source_line": "Spruitjes van zorgboerderij De Zwaluw uit Lage Zwaluwe (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Chinese kool",
+      "origin": "familie Tielen uit noord-Limburg",
+      "source_line": "Chinese kool van familie Tielen uit noord-Limburg (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": false,
+      "included_in_two_person_box": true,
+      "name": "Aardpeer",
+      "origin": "familie van Geffen uit Lelystad",
+      "source_line": "Aardpeer van familie van Geffen uit Lelystad (Biologisch)"
+    },
+    {
+      "category": "vegetable",
+      "certification": "biologisch",
+      "excluded_from_one_person_box": true,
+      "included_in_two_person_box": true,
+      "name": "Boerenkool",
+      "origin": "’t Veebroek uit Laren",
+      "source_line": "Boerenkool van ’t Veebroek uit Laren (Biologisch) *"
+    }
+  ],
+  "week": "2026-W49",
+  "week_number": 49
+}

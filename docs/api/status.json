@@ -1,5 +1,5 @@
 {
-  "last_success": "2026-11-19T20:36:25Z",
+  "last_success": "2026-11-26T21:30:38Z",
   "observed_modified_history": [
     "2026-08-27T10:20:54",
     "2026-09-03T12:58:09",
@@ -16,19 +16,20 @@
     "2026-11-05T14:12:20",
     "2026-11-11T16:31:53",
     "2026-11-12T14:40:59",
-    "2026-11-19T14:43:08"
+    "2026-11-19T14:43:08",
+    "2026-11-26T15:25:12"
   ],
-  "publication_hash": "8365fe9b887fcbc6628995772a34bcfa5239807b6f9356da1dd8a3f128019e1a",
+  "publication_hash": "46f79b156583e626f4bdc522b37c514140bfd0d7f9e19f8e9eb560c453e0303e",
   "published_weeks": [
-    "2026-W47",
-    "2026-W48"
+    "2026-W48",
+    "2026-W49"
   ],
-  "source_modified": "2026-11-19T15:43:08",
-  "source_modified_gmt": "2026-11-19T14:43:08",
+  "source_modified": "2026-11-26T16:25:12",
+  "source_modified_gmt": "2026-11-26T15:25:12",
   "status": "ok",
   "warnings": [],
   "week_hashes": {
-    "2026-W47": "cdc35fc2733d17dd9348cebd9ba677545e64967a8fa91efae23412552b8a74aa",
-    "2026-W48": "34a2839a73d65d4c53f5d5a440d6edaaddbc6775a36a2930013acdb7604c1c70"
+    "2026-W48": "b204c14aebebc649f694be2c864ca9ebfec6a3bb208ba130fbe40a346e9aa2f6",
+    "2026-W49": "b4b743d29425fdffd57c0819ad1bdb161f09668ff85962aa2d0ebd38d3ffa661"
   }
 }
